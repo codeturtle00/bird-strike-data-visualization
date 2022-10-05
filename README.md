@@ -1,4 +1,4 @@
-# airplane-data-visualizer
+# bird-strike-data-visualization
 Repo for CSC302 Project on visualizing data
 
 # Meeting Minutes
