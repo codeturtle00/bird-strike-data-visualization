@@ -23,8 +23,8 @@ We will be developing a web application that displays important and interesting 
 ## Team
 
 Our team consists of three members, 4th year UofT students.
-* **Jacky**.
-* **Henning**.
+* **Jacky Yang**.
+* **Henning Lindig**. Experience in full-stack web development and software infrastructure
 * **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
 
 ## Tech Stack
@@ -148,10 +148,10 @@ We have thought about bundling the CSV file with the app directly. This is not a
 
 Since we are building our website with scale in mind, we pushed back on using SQLite. [A small excerpt](https://www.sqlite.org/whentouse.html) from SQLite has a nice guide that we used to make a decisiom:
 
-Is the data separated from the application by a network? → choose client/server
-Many concurrent writers? → choose client/server
-Big data? → choose client/server
-Otherwise → choose SQLite!
+Is the data separated from the application by a network? → choose client/server.  
+Many concurrent writers? → choose client/server.  
+Big data? → choose client/server.  
+Otherwise → choose SQLite!   
 
 Our app is going to be designed to be highly scalable so SQLite is not an option.
 
