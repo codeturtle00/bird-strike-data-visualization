@@ -90,7 +90,7 @@ We expect to rotate the above management roles every two weeks. Our meeting agen
 * Chart creation in the React app, communicating with Backend to get the data - Jacky
 * Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
 
-# Detailed Process Documentation (IN PROGRESS)
+# Detailed Process Documentation
 
 ## Work Organization
 
