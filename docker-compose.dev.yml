@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  client:
+    container_name: bird-strikes-react
+    image: bird-strikes-frontend-react
+    build:
+      context: ./frontend
+      target: development
+    volumes:
+      - ./frontend:/app
+    ports:
+      - 3000:3000
+  server:
+    container_name: bird-strikes-server
+    image: bird-strikes-server
+    build:
+      context: ./backend
+    ports:
+      - 3001:3001
+    depends_on:
+      - postgres
+    networks:
+      - postgres
+  postgres:
+    networks:
+      - postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d/
+volumes:
+  db:
+    driver: local
+
+networks:
+  postgres:
+    driver: bridge
