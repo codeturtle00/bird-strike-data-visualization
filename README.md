@@ -5,8 +5,8 @@
 * [Project Overview](https://github.com/codeturtle00/bird-strike-data-visualization#project-overview)
 * [Running Application](https://github.com/codeturtle00/bird-strike-data-visualization#running-application)
 * [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
-* [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization#meeting-notes)
 * [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
+* [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
 
 # Project Overview
 
