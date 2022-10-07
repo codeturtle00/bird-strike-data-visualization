@@ -116,7 +116,7 @@ Data + FrontEnd was the sweet spot that we have initially selected. Unfortunatel
 
 Thus, we are going to use database + FrontEnd + BackEnd. Most of the web solutions nowadays follow this principle, and we are just going to follow the common practices.
 
-## Technology stack solutions
+## Technology Stack Solutions
 
 ### Web Application
 
@@ -138,7 +138,7 @@ For visualizations, we considered software solutions such as Datasette, Tableau 
 
 Since we decided to write our own software and not rely on other platforms, Datasette and Tableau did not satisfy this requirement. CharJS was a perfect solution to use for the FrontEnd app to reuse a nice chart builder functionality.
 
-## Database
+## Databases
 
 ### No DB
 
@@ -186,7 +186,7 @@ During the initial meeting we decided to work with Airplane datasets, since all 
 https://www.kaggle.com/datasets/thedevastator/airplane-crashes-and-fatalities
 https://www.kaggle.com/datasets/saurograndi/airplane-crashes-since-1908
 https://www.kaggle.com/code/ruslankl/airplane-crashes-data-visualization
-https://github.com/quankiquanki/skytrax-reviews-dataset
+https://github.com/quankiquanki/skytrax-reviews-dataset   
 https://wildlife.faa.gov/home
 
 Out of all of these, some are wildly popular, thus not very interesting to explore.  
