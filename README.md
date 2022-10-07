@@ -67,11 +67,11 @@ Our roadmap currently consists of three milestones.
 
 At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
 
-** Team Member's Responsibilities
+## Team Member's Responsibilities
 
 TODO
 
-** Immediate Next Actions
+## Immediate Next Actions
 
 TODO: A set of two to three  that each team member is responsible for, in order to achieve the first of those milestones.
 
@@ -112,4 +112,4 @@ Explain why we need backend in Phase 3. (security)
 
 # Meeting Notes
 
-
+TODO
