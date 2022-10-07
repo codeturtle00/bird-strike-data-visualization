@@ -23,13 +23,13 @@ We will be developing a web application that displays important and interesting 
 ## Team
 
 Our team consists of three members, 4th year UofT students.
-* Jacky.
-* Henning.
+* **Jacky**.
+* **Henning**.
 * **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
 
 ## Tech Stack
 
-- Web application: `React`
+- Web application: `React` `TypeScript` `NodeJS`
 - Visualizations: `Chart JS`
 - Database: `Postgres`
 - AWS: `Amplify` `RDS`
@@ -59,9 +59,10 @@ Our roadmap currently consists of three milestones.
 * Data visualizations for our Top-5 questions
 * Deployed app
 * CI & CD implementation
+* Hosting the database and itnegrating it with backend
 
 **Milestone 3:**
-* Adding backend to interact with Twitter API
+* Backend to interact with Twitter API
 * Live data stream analysis for live tweets
 * Frontend integration with Backend to display live plane crash data
 
@@ -69,47 +70,126 @@ At every stage we expect to add tests that <ins>fail on the previous stage</ins>
 
 ## Team Member's Responsibilities
 
-TODO
+Technical responsibilities:
+* Database, dealing with data, querying, database deployment - Dmytro
+* FrontEnd (Charts, visualizations) - Jacky
+* App deployment, Backend, Docker - Henning
+
+Everyone is going to write test for their own thing.
+
+Management responsibilities:
+* Plan and develop the project idea
+* Lead the team discussion, talk to proffessor
+* Monitor project Progress and set deadlines, take notes
+ 
+We expect to rotate the above management roles every two weeks. Our meeting agendas will contain role assignments.
 
 ## Immediate Next Actions
 
-TODO: A set of two to three  that each team member is responsible for, in order to achieve the first of those milestones.
-
+* Database server setup, loading the data into it, query preparation - Dmytro
+* Chart creation in the React app, communicating with Backend to get the data - Jacky
+* Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
 
 # Detailed Process Documentation (IN PROGRESS)
 
 ## Work Organization
 
-Trello and tasks.
+Tasks are organized on GitHub Projects board. We have three columns: To Do, In Progress, and Done, which helps us organize the work in a Kanban way.
 
 ## Meeting Structure
 
-1 large weekly meeting on Wednesday.
-1 additional small meeting to update on progress, usually during weekends.
-
-## Dataset Selection
-
-Provide datasets that we evaluated and which one we chose
-
-## Technology stack solutions
-
-For each of the below explain why so.
-
-- Web application: `React`, `TypeScript`, `NodeJS`
-- Visualizations: `Chart JS` (vs Datasette, Tableau)
-- Database: `Postgres` (vs SQLite)
-- AWS: `Amplify` `RDS`
-- Containerization: `Docker`
+One large weekly meeting on Wednesday.
+One additional small meeting to update on progress, usually during weekends.
 
 ## Application Design
 
-Explain the trade-offs between
-* Data + Tableau
+For this project, we have been considering three approaches:
+* Data + Tableau / Datasette
 * Data + FrontEnd
 * Data + FrontEnd + BackEnd
 
-Explain why we need backend in Phase 3. (security)
+All of these can be viable solutions, although they represent different levels of complexity. 
 
-# Meeting Notes
+We have discarded the first option as that one does not satisfy our assignment requirements. We are going to need to implement CI/CD, testing, etc, and it almost does not make sense to do it when you are working with ready software solutions such as Tableau or Datasette. The implementation does not require any significant coding so it did not fit our expectations as well.
 
-TODO
+Data + FrontEnd was the sweet spot that we have initially selected. Unfortunately, it did not go as planned. We quickly understood the need to query the database and implement some complex logic that we did not want to put into our FrontEnd. Moreover, application security is required. In the future phases we are going to connect to the db server, and it is not possible to store credentials reliably in a FrontEnd application.
+
+Thus, we are going to use database + FrontEnd + BackEnd. Most of the web solutions nowadays follow this principle, and we are just going to follow the common practices.
+
+## Technology stack solutions
+
+### Web Application
+
+Here are the solutions we considered for FrontEnd:
+* Vanilla JavaScript or JQuery, HTML/CSS. **Cons:** too complex to implement, no one uses this stack today to develop modern apps.
+* Angular. **Cons:** Is more suited for more complex applications, no one in the team has experience with it.
+* Vue vs React. This one is debatable and has not clear winner from the technical side for our app. Since all team members worked with React before, it became the winner.
+
+We also preferred using Typescipt over JavaScript because of its language features, reference validation, project scalability, and code maintainability.
+
+Here are the solutions we considered for BackEnd:
+* Python (libs as Flask, Django, FastAPI) **Cons:** Python is single-flow, and requests are processed quite slowly
+* Java vs NodeJS. Java dominates enterprise computing applications and offers top performance and security but it is more difficult to use. Team members also lack experience with it, and we did not want to focus on digging into learning Java.
+* NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features.
+
+## Visualizations
+
+For visualizations, we considered software solutions such as Datasette, Tableau and library as ChartJS.
+
+Since we decided to write our own software and not rely on other platforms, Datasette and Tableau did not satisfy this requirement. CharJS was a perfect solution to use for the FrontEnd app to reuse a nice chart builder functionality.
+
+## Database
+
+### No DB
+
+We have thought about bundling the CSV file with the app directly. This is not a viable solution since the app would become too large, especially given the fact that we have a 200MB+ dataset.
+
+### SQLite
+
+Since we are building our website with scale in mind, we pushed back on using SQLite. [A small excerpt](https://www.sqlite.org/whentouse.html) from SQLite has a nice guide that we used to make a decisiom:
+
+Is the data separated from the application by a network? → choose client/server
+Many concurrent writers? → choose client/server
+Big data? → choose client/server
+Otherwise → choose SQLite!
+
+Our app is going to be designed to be highly scalable so SQLite is not an option.
+
+### NoSQL
+
+NoSQL databases are great for Big Data workloads but they would be an overkill for our app, at least in the beginning. 
+NoSQL databases require a lot of attention to schemas, and we would first need to think about designing our queries and only then build schemas and store data.
+
+In our usecase, we already have a dataset that is tabular. We want to be very flexible in terms of any aggregations or queries that we run on the data.
+NoSQL solution would not fit well.
+
+### Relational Server DBs
+
+There are a number of relation DBs out there (Postgres, MySQL, Oracle, RDS, etc).
+For our app, there are no difference which one to use from the technical side.
+Since the team is most familiar with postgresql, we decide to use Postgres.
+
+## Cloud
+
+In the future, we are going to host our apps. Both AWS and Azure and GCP offer all the resources we might need so there is no clear winner there. Since we have a free student tier on AWS, this is the cloud we are going to use.
+
+## Containers
+
+[Docker vs Vagrant](https://keyua.org/blog/docker-vs-vagrant-for-development/): Vagrant allows you to isolate all the necessary resources completely. However, compared to Docker, it requires more resources initially. Compared to Vagrant, Docker wins on this criterion because it spends fewer resources, and you can create Docker images faster than Vagrant virtual machine
+
+This is why we chose Docker.
+
+## Dataset Selection
+
+During the initial meeting we decided to work with Airplane datasets, since all of us had interest in it. We have generated the following dataset ideas:
+
+https://www.kaggle.com/datasets/thedevastator/airplane-crashes-and-fatalities
+https://www.kaggle.com/datasets/saurograndi/airplane-crashes-since-1908
+https://www.kaggle.com/code/ruslankl/airplane-crashes-data-visualization
+https://github.com/quankiquanki/skytrax-reviews-dataset
+https://wildlife.faa.gov/home
+
+Out of all of these, some are wildly popular, thus not very interesting to explore.  
+Some do not contain enough data to draw any interesting conclusions.
+
+The only dataset that all of us liked was the last one, which we decided to use.
