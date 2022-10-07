@@ -37,11 +37,14 @@ Our team consists of three members, 4th year UofT students.
 
 # Running Application
 
-To spin up development application, run `docker-compose -f docker-compose.dev.yml up`. 
-To tear down, run `docker-compose -f docker-compose.dev.yml down --volumes`. 
+To spin up development application, run 
+```docker-compose -f docker-compose.dev.yml up```.  
+To tear down, run
+```docker-compose -f docker-compose.dev.yml down --volumes```.  
 
-To build development image, run `docker build . -t bird-strike-react:latest`. 
-To run the container, run `docker run -it --rm -p 3000:3000 -v ${PWD}/src:/app/src -v /node_modules -e CHOKIDAR_USEPOLLING=true bird-strike-react:latest`. 
+To build development image, run 
+```docker build . -t bird-strike-react:latest```.  
+To run the container, run ```docker run -it --rm -p 3000:3000 -v ${PWD}/src:/app/src -v /node_modules -e CHOKIDAR_USEPOLLING=true bird-strike-react:latest```. 
 
 # Roadmap
 
@@ -64,9 +67,48 @@ Our roadmap currently consists of three milestones.
 
 At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
 
-# Detailed Process Documentation
+** Team Member's Responsibilities
+
+TODO
+
+** Immediate Next Actions
+
+TODO: A set of two to three  that each team member is responsible for, in order to achieve the first of those milestones.
 
 
+# Detailed Process Documentation (IN PROGRESS)
+
+## Work Organization
+
+Trello and tasks.
+
+## Meeting Structure
+
+1 large weekly meeting on Wednesday.
+1 additional small meeting to update on progress, usually during weekends.
+
+## Dataset Selection
+
+Provide datasets that we evaluated and which one we chose
+
+## Technology stack solutions
+
+For each of the below explain why so.
+
+- Web application: `React`
+- Visualizations: `Chart JS` (vs Datasette, Tableau)
+- Database: `Postgres` (vs SQLite)
+- AWS: `Amplify` `RDS`
+- Containerization: `Docker`
+
+## Application Design
+
+Explain the trade-offs between
+* Data + Tableau
+* Data + FrontEnd
+* Data + FrontEnd + BackEnd
+
+Explain why we need backend in Phase 3. (security)
 
 # Meeting Notes
 
