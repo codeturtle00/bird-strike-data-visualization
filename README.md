@@ -45,8 +45,29 @@ To run the container, run `docker run -it --rm -p 3000:3000 -v ${PWD}/src:/app/s
 
 # Roadmap
 
+Our roadmap currently consists of three milestones.
+
+**Milestone 1:**
+* Bootstrapped app
+* Basic tests
+* Documentation and processes in place
+
+**Milestone 2:**
+* Data visualizations for our Top-5 questions
+* Deployed app
+* CI & CD implementation
+
+**Milestone 3:**
+* Adding backend to interact with Twitter API
+* Live data stream analysis for live tweets
+* Frontend integration with Backend to display live plane crash data
+
+At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
+
+# Detailed Process Documentation
+
+
 
 # Meeting Notes
 
 
-# Detailed Process Documentation
