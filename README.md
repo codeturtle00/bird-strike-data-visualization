@@ -95,7 +95,7 @@ Provide datasets that we evaluated and which one we chose
 
 For each of the below explain why so.
 
-- Web application: `React`
+- Web application: `React`, `TypeScript`, `NodeJS`
 - Visualizations: `Chart JS` (vs Datasette, Tableau)
 - Database: `Postgres` (vs SQLite)
 - AWS: `Amplify` `RDS`
