@@ -2,30 +2,32 @@
 
 # Quick Links
 
-* [Project Overview](https://github.com/codeturtle00/bird-strike-data-visualization#project-overview)
-* [Running Application](https://github.com/codeturtle00/bird-strike-data-visualization#running-application)
-* [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
-* [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
-* [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
+- [Project Overview](https://github.com/codeturtle00/bird-strike-data-visualization#project-overview)
+- [Running Application](https://github.com/codeturtle00/bird-strike-data-visualization#running-application)
+- [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
+- [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
+- [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
 
 # Project Overview
 
-*Note: To read about how we arrived at this design, please see the sections below*
+_Note: To read about how we arrived at this design, please see the sections below_
 
 Our task was to find meaningful dataset that we could visualize and draw interesting conclusions from. We decided to use a governmental dataset called [FAA Wildlife Strike Database](https://wildlife.faa.gov/home). It contains records of reported wildlife strikes since 1990.
 
 We will be developing a web application that displays important and interesting statistics from the above-mentioned dataset. Among the questions that we are going to answer, we include but are not limited to the following:
-* Where are bird strikes most frequent?
-* How fatal are bird strikes accidents?
-* Safety of different types of aircrafts?
-* When (trends over time)?
+
+- Where are bird strikes most frequent?
+- How fatal are bird strikes accidents?
+- Safety of different types of aircrafts?
+- When (trends over time)?
 
 ## Team
 
 Our team consists of three members, 4th year UofT students.
-* **Jacky Yang**. Experience in UX design and full stack development with especial proficiency in React and Python.
-* **Henning Lindig**. Experience in full-stack web development and software infrastructure
-* **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
+
+- **Jacky Yang**. Experience in UX design and full stack development with especial proficiency in React and Python.
+- **Henning Lindig**. Experience in full-stack web development and software infrastructure
+- **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
 
 ## Tech Stack
 
@@ -37,59 +39,67 @@ Our team consists of three members, 4th year UofT students.
 
 # Running Application
 
-To spin up development application, run 
-```docker-compose -f docker-compose.dev.yml up```.  
-To tear down, run
-```docker-compose -f docker-compose.dev.yml down --volumes```.  
+To spin up development application, run
+`docker-compose -f docker-compose.dev.yml up`.
 
-To build development image, run 
-```docker build . -t bird-strike-react:latest```.  
-To run the container, run ```docker run -it --rm -p 3000:3000 -v ${PWD}/src:/app/src -v /node_modules -e CHOKIDAR_USEPOLLING=true bird-strike-react:latest```. 
+To rebuild the docker images , run
+`docker-compose -f docker-compose.dev.yml build`.
+
+To tear down, run
+`docker-compose -f docker-compose.dev.yml down --volumes`.
+
+To run tests, run
+`docker-compose -f docker-compose.dev.yml run client npm test`.
 
 # Roadmap
 
 Our roadmap currently consists of three milestones.
 
 **Milestone 1:**
-* Bootstrapped app
-* Functionality to dockerize and easily spin up app
-* Basic tests
-* Documentation and processes in place
+
+- Bootstrapped app
+- Functionality to dockerize and easily spin up app
+- Basic tests
+- Documentation and processes in place
 
 **Milestone 2:**
-* Data visualizations for our Top-5 questions
-* Deployed app
-* CI & CD implementation
-* Hosting the database and integrating it with backend
+
+- Data visualizations for our Top-5 questions
+- Deployed app
+- CI & CD implementation
+- Hosting the database and integrating it with backend
 
 **Milestone 3:**
-* Backend to interact with Twitter API
-* Live data stream analysis for live tweets
-* Frontend integration with Backend to display live plane crash data
+
+- Backend to interact with Twitter API
+- Live data stream analysis for live tweets
+- Frontend integration with Backend to display live plane crash data
 
 At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
 
 ## Team Member's Responsibilities
 
 Technical responsibilities:
-* Database, dealing with data, querying, database deployment - Dmytro
-* FrontEnd (Charts, visualizations) - Jacky
-* App deployment, Backend, Docker - Henning
+
+- Database, dealing with data, querying, database deployment - Dmytro
+- FrontEnd (Charts, visualizations) - Jacky
+- App deployment, Backend, Docker - Henning
 
 Everyone is going to write test for their own thing.
 
 Management responsibilities:
-* Plan and develop the project idea
-* Lead the team discussion, talk to proffessor
-* Monitor project Progress and set deadlines, take notes
- 
+
+- Plan and develop the project idea
+- Lead the team discussion, talk to proffessor
+- Monitor project Progress and set deadlines, take notes
+
 We expect to rotate the above management roles every two weeks. Our meeting agendas will contain role assignments.
 
 ## Immediate Next Actions
 
-* Database server setup, loading the data into it, query preparation - Dmytro
-* Chart creation in the React app, communicating with Backend to get the data - Jacky
-* Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
+- Database server setup, loading the data into it, query preparation - Dmytro
+- Chart creation in the React app, communicating with Backend to get the data - Jacky
+- Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
 
 # Detailed Process Documentation
 
@@ -105,11 +115,12 @@ One additional small meeting to update on progress, usually during weekends.
 ## Application Design
 
 For this project, we have been considering three approaches:
-* Data + Tableau / Datasette
-* Data + FrontEnd
-* Data + FrontEnd + BackEnd
 
-All of these can be viable solutions, although they represent different levels of complexity. 
+- Data + Tableau / Datasette
+- Data + FrontEnd
+- Data + FrontEnd + BackEnd
+
+All of these can be viable solutions, although they represent different levels of complexity.
 
 We have discarded the first option as that one does not satisfy our assignment requirements. We are going to need to implement CI/CD, testing, etc, and it almost does not make sense to do it when you are working with ready software solutions such as Tableau or Datasette. The implementation does not require any significant coding so it did not fit our expectations as well.
 
@@ -122,16 +133,18 @@ Thus, we are going to use database + FrontEnd + BackEnd. Most of the web solutio
 ### Web Application
 
 Here are the solutions we considered for FrontEnd:
-* Vanilla JavaScript or JQuery, HTML/CSS. **Cons:** too complex to implement, no one uses this stack today to develop modern apps.
-* Angular. **Cons:** Is more suited for more complex applications, no one in the team has experience with it.
-* Vue vs React. This one is debatable and has not clear winner from the technical side for our app. Since all team members worked with React before, it became the winner.
+
+- Vanilla JavaScript or JQuery, HTML/CSS. **Cons:** too complex to implement, no one uses this stack today to develop modern apps.
+- Angular. **Cons:** Is more suited for more complex applications, no one in the team has experience with it.
+- Vue vs React. This one is debatable and has not clear winner from the technical side for our app. Since all team members worked with React before, it became the winner.
 
 We also preferred using Typescipt over JavaScript because of its language features, reference validation, project scalability, and code maintainability.
 
 Here are the solutions we considered for BackEnd:
-* Python (libs as Flask, Django, FastAPI) **Cons:** Python is single-flow, and requests are processed quite slowly
-* Java vs NodeJS. Java dominates enterprise computing applications and offers top performance and security but it is more difficult to use. Team members also lack experience with it, and we did not want to focus on digging into learning Java.
-* NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features. There is also a huge precident in industry for React + NodeJS apps.
+
+- Python (libs as Flask, Django, FastAPI) **Cons:** Python is single-flow, and requests are processed quite slowly
+- Java vs NodeJS. Java dominates enterprise computing applications and offers top performance and security but it is more difficult to use. Team members also lack experience with it, and we did not want to focus on digging into learning Java.
+- NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features. There is also a huge precident in industry for React + NodeJS apps.
 
 ## Visualizations
 
@@ -152,7 +165,7 @@ Since we are building our website with scale in mind, we pushed back on using SQ
 Is the data separated from the application by a network? → choose client/server.  
 Many concurrent writers? → choose client/server.  
 Big data? → choose client/server.  
-Otherwise → choose SQLite!   
+Otherwise → choose SQLite!
 
 Our app is going to be designed to be highly scalable so SQLite is not an option.
 
@@ -185,7 +198,7 @@ During the initial meeting we decided to work with Airplane datasets, since all 
 https://www.kaggle.com/datasets/thedevastator/airplane-crashes-and-fatalities
 https://www.kaggle.com/datasets/saurograndi/airplane-crashes-since-1908
 https://www.kaggle.com/code/ruslankl/airplane-crashes-data-visualization
-https://github.com/quankiquanki/skytrax-reviews-dataset   
+https://github.com/quankiquanki/skytrax-reviews-dataset  
 https://wildlife.faa.gov/home
 
 Out of all of these, some are wildly popular, thus not very interesting to explore.  
