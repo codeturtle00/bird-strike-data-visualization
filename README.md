@@ -85,13 +85,13 @@ Technical responsibilities:
 - FrontEnd (Charts, visualizations) - Jacky
 - App deployment, Backend, Docker - Henning
 
-Everyone is going to write test for their own thing.
+Everyone is responsible for writing tests for their own features, and will be called out in PRs.
 
 Management responsibilities:
 
 - Plan and develop the project idea
-- Lead the team discussion, talk to proffessor
-- Monitor project Progress and set deadlines, take notes
+- Lead the team discussion, talk to professor
+- Monitor project progress and set deadlines, take notes
 
 We expect to rotate the above management roles every two weeks. Our meeting agendas will contain role assignments.
 
@@ -144,7 +144,7 @@ Here are the solutions we considered for BackEnd:
 
 - Python (libs as Flask, Django, FastAPI) **Cons:** Python is single-flow, and requests are processed quite slowly
 - Java vs NodeJS. Java dominates enterprise computing applications and offers top performance and security but it is more difficult to use. Team members also lack experience with it, and we did not want to focus on digging into learning Java.
-- NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features. There is also a huge precident in industry for React + NodeJS apps.
+- NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features. And there is also a huge precedent in industry for React + NodeJS apps leading to greater support.
 
 ## Visualizations
 
