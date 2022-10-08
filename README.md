@@ -52,6 +52,7 @@ Our roadmap currently consists of three milestones.
 
 **Milestone 1:**
 * Bootstrapped app
+* Functionality to dockerize and easily spin up app
 * Basic tests
 * Documentation and processes in place
 
@@ -59,7 +60,7 @@ Our roadmap currently consists of three milestones.
 * Data visualizations for our Top-5 questions
 * Deployed app
 * CI & CD implementation
-* Hosting the database and itnegrating it with backend
+* Hosting the database and integrating it with backend
 
 **Milestone 3:**
 * Backend to interact with Twitter API
@@ -130,13 +131,13 @@ We also preferred using Typescipt over JavaScript because of its language featur
 Here are the solutions we considered for BackEnd:
 * Python (libs as Flask, Django, FastAPI) **Cons:** Python is single-flow, and requests are processed quite slowly
 * Java vs NodeJS. Java dominates enterprise computing applications and offers top performance and security but it is more difficult to use. Team members also lack experience with it, and we did not want to focus on digging into learning Java.
-* NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features.
+* NodeJS with TypeScript. Everyone has experience with it, it offers quick and easy development, great features. There is also a huge precident in industry for React + NodeJS apps.
 
 ## Visualizations
 
 For visualizations, we considered software solutions such as Datasette, Tableau and library as ChartJS.
 
-Since we decided to write our own software and not rely on other platforms, Datasette and Tableau did not satisfy this requirement. CharJS was a perfect solution to use for the FrontEnd app to reuse a nice chart builder functionality.
+Since we decided / were required to to write our own software and not rely on other platforms that provide too much out of the box, Datasette and Tableau did not satisfy this requirement. However, writing custom visualization in the browser from scratch would be very time consuming and overkill given the scope of our application. Thus, ChartJS was a perfect compromise to use for the FrontEnd app to reuse a nice chart builder functionality, while still maintaining a good amount of control ourselves. Since the implementation for the visualizations is set for a future milestone, we are aware that we that we may have to reassess this decision.
 
 ## Databases
 
@@ -157,13 +158,11 @@ Our app is going to be designed to be highly scalable so SQLite is not an option
 
 ### NoSQL
 
-NoSQL databases are great for Big Data workloads but they would be an overkill for our app, at least in the beginning. 
-NoSQL databases require a lot of attention to schemas, and we would first need to think about designing our queries and only then build schemas and store data.
-
-In our usecase, we already have a dataset that is tabular. We want to be very flexible in terms of any aggregations or queries that we run on the data.
-NoSQL solution would not fit well.
+NoSQL databases are great for unstructured data and Big Data workloads that require horizontal scaling, but these benefits are not very relevant for our app. We also do not forsee these items becoming issues in the future.
 
 ### Relational Server DBs
+
+Since our data is already well-structured and tabluar, a SQL-based db is a good candiadate. Combined with the ACID properties of SQL dbs, the better querying against complex and structured data, and the team members' familiarity with SQL, we decided that going this route is a great choice.
 
 There are a number of relation DBs out there (Postgres, MySQL, Oracle, RDS, etc).
 For our app, there are no difference which one to use from the technical side.
