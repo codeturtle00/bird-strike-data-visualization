@@ -23,7 +23,7 @@ We will be developing a web application that displays important and interesting 
 ## Team
 
 Our team consists of three members, 4th year UofT students.
-* **Jacky Yang**.
+* **Jacky Yang**. Experience in UX design and full stack development with especial proficiency in React and Python.
 * **Henning Lindig**. Experience in full-stack web development and software infrastructure
 * **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
 
