@@ -39,6 +39,10 @@ Our team consists of three members, 4th year UofT students.
 
 # Running Application
 
+To setup:
+`cd ./setup`
+`sh ./setup-script.sh`
+
 To spin up development application, run
 `docker-compose -f docker-compose.dev.yml up`.
 
