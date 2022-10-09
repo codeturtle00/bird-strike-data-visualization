@@ -7,7 +7,6 @@ curl -fsSL https://get.docker.com -o get-docker.sh
 
 echo Installing docker...
 sh ./get-docker.sh
-sudo apt-get install docker-compose-plugin
 
 echo Adding user to new docker group...
 sudo groupadd -f docker
