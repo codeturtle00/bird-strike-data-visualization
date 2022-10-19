@@ -4,6 +4,64 @@
 
 Please be aware that this file is being regularly updated with most recent meeting notes coming up first.
 
+## October 19
+
+Agenda:
+* Formalize deliverables in future milestones
+	* Task, Assignee, Deadline, Success metric
+* Pick out deliverables for this Assignment period
+	
+Features:
+
+we will create tickets in project board for devs with perhaps more details
+
+() = success metric
+
+1. Data Visualization (visually pleasing, present, functional)
+	* Interactive map with markers of incident locations and slidable timeseries so we can see the following:
+		* num Incidents by year
+		* num Injuries by year
+	* Summary stats
+		* Fatality rate, num incidents, interesting col stats
+	* Horizontal bar chart of top aricraft types to injuries
+2.  Responsiveness (remain functional and aesthetic on mobile down to 320px, tablet)
+3.  Deployment
+  	* implement web hook and deployment scripts to github repo
+	* AWS amplify for frontend, unverified 
+	* use other services for backend and job scheduler, TBD
+	* (pushes to master automatically deploys working web app for desktop and mobile)
+4.  Test Suite
+	* (75% test coverage + bring up sensible edge cases in code reviews)
+	* CI testing
+		* Add github actions for merge criteria (cant merge into main w/out tests and lint passing)
+
+5.  Daily Pull of FAA strike report 
+	* Pulling file - job scheduler in AWS will do all 3, ultimately writing to DB
+	* Transform into DB
+	* Precomputing Visualization Data and writing to DB
+	* (automatically executable without error every day)
+
+6. Twitter iframe window [because there's an account that live tweets plane crashes](https://twitter.com/AviationSafety?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
+
+A2 TODOs:
+* Jacky works on Data Visualization
+	* MVP for bar chart, summary stats, map. Need to make or outline all API calls to backend. Doesn't need to be pretty or responsive (Fri, Oct 28)
+	* Report what frontend needs from backend (Wed, Oct 26)
+* Henning sets up CI
+	* CI/CD (Fri, Oct 28)
+	* Backend endpoints (Wed, Oct 26)
+* Dmytro works on pull and computation of FAA strike report, load into DB. Do not need to deliver daily pull for A2. (Sun, Oct 30)
+
+
+Introspective:
+* had trouble coming up with success metrics for testing
+* discussed pre-commit/merge restrictions
+	* enforced test coverage will slow down development 
+* scrapped twitter API integration milestone, replaced with feature #5 above
+	* discussed essence of why we wanted twitter live tweet stream feauture: basically we wanted some way to keep our users updated, our data relevant.
+* discussed heroku vs AWS to host job that'll daily pull FAA strike report 
+
+
 ## October 9
 
 Discussion:
