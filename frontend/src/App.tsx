@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import Map from "./components/visualizations/Map";
 
 interface birdStrikes {
   id: Number;
@@ -80,7 +81,8 @@ function App() {
 
   const labels = stateFreqs.map((x) => x["origin_state"]);
   const data = stateFreqs.map((x) => x.data);
-  console.log(labels);
+  console.log("Test")
+  console.log(stateFreqs);
 
   return (
     <div>
@@ -90,13 +92,14 @@ function App() {
           labels: labels,
           datasets: [
             {
-              label: "Bird Strikes by State",
+              label: "Number of Incidents by Aircraft model",
               data: data,
               backgroundColor: "rgba(53, 162, 235, 1)",
             },
           ],
         }}
       />
+      <Map/>
     </div>
   );
 }
