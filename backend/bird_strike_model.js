@@ -1,11 +1,17 @@
 const Pool = require("pg").Pool;
-const pool = new Pool({
-  user: "postgres",
-  host: "postgres",
-  database: "postgres",
-  password: "postgres",
-  port: 5432,
-});
+let pool;
+
+if (process.env.NODE_ENV == "production") {
+  pool = process.env.DB_URL;
+} else {
+  pool = new Pool({
+    user: "postgres",
+    host: "postgres",
+    database: "postgres",
+    password: "postgres",
+    port: 5432,
+  });
+}
 
 const get_bird_strikes = () => {
   return new Promise(function (resolve, reject) {
