@@ -15,6 +15,9 @@ jobs:
         - uses: actions/setup-node@v3
           with:
             node-version: 18
+        - name: install
+          working-directory: ./frontend
+          run: npm install
         - name: build
           working-directory: ./frontend
           run: npm run build
