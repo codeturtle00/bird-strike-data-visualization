@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ComposableMap,
   Geographies,
@@ -29,27 +29,64 @@ const markers = [
 ];
 
 export default function Map() {
+  const [currYear, setCurrYear] = useState(2012);
+
+  const geoUrl =
+    "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
+
+  const minYear = 1990; // TODO: query for this
+  const maxYear = 2022; // TODO: query for this
+
   return (
-    <ComposableMap>
-      <Geographies geography={geoUrl}>
-        {({ geographies }: any) =>
-          geographies.map((geo: { rsmKey: React.Key | null | undefined }) => (
-            <Geography key={geo.rsmKey} geography={geo} />
-          ))
-        }
-      </Geographies>
-      {markers.map(({ name, coordinates, markerOffset }) => (
-        <Marker key={name} coordinates={coordinates as [number, number]}>
-          <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
-          <text
-            textAnchor="middle"
-            y={markerOffset}
-            style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
-          >
-            {name}
-          </text>
-        </Marker>
-      ))}
-    </ComposableMap>
+    <div>
+      <ComposableMap>
+        <Geographies geography="/map.json">
+          {({ geographies }: any) =>
+            geographies.map((geo: { rsmKey: React.Key | null | undefined }) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: {
+                    fill: "#D6D6DA",
+                    outline: "none"
+                  },
+                  hover: {
+                    fill: "#F53",
+                    outline: "none"
+                  },
+                  pressed: {
+                    fill: "#E42",
+                    outline: "none"
+                  }
+                }}
+              />
+            ))
+          }
+        </Geographies>
+        {markers.map(({ name, coordinates, markerOffset }) => (
+          <Marker key={name} coordinates={coordinates as [number, number]}>
+            <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
+            <text
+              textAnchor="middle"
+              y={markerOffset}
+              style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
+            >
+              {name}
+            </text>
+          </Marker>
+        ))}
+      </ComposableMap>
+      Year: {currYear}
+      <input
+        type="range"
+        min={minYear}
+        max={maxYear}
+        value={currYear}
+        onChange={(e) => setCurrYear(e.target.valueAsNumber)}
+        className="slider"
+        id="myRange"
+      ></input>
+    </div>
   );
 }
