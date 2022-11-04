@@ -1,5 +1,8 @@
 # Bird Strikes Visualization (CSC302 Project)
 
+Successfully completed Assignment 2.  
+Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).
+
 # Quick Links
 
 - [Project Overview](https://github.com/codeturtle00/bird-strike-data-visualization#project-overview)
@@ -7,6 +10,7 @@
 - [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
 - [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
 - [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
+- [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion)
 
 # Project Overview
 
@@ -38,6 +42,11 @@ Our team consists of three members, 4th year UofT students.
 - Containerization: `Docker`
 
 # Running Application
+
+To setup:
+`cd ./setup`
+`sh ./setup-script.sh`
+Add the given db connection string to a file `./backend/.env` as per `./backend/.env-example`
 
 To spin up development application, run
 `docker-compose -f docker-compose.dev.yml up`.
@@ -205,3 +214,22 @@ Out of all of these, some are wildly popular, thus not very interesting to explo
 Some do not contain enough data to draw any interesting conclusions.
 
 The only dataset that all of us liked was the last one, which we decided to use.
+
+## Assignment 2 Discussion
+
+### A description of the features your project intends to implement (or next steps that you need to pursue) with sub-tasks prioritized.
+
+TODO:
+These descriptions should involve:
+The rationale behind how those features have been prioritized.
+A relatively specific breakdown of what needs to be done to deliver each of these features.
+What specific tasks need to be accomplished - by which people, due on what days, and
+What acceptance criteria exist for these features - in other words, how will you know that this work is finished?
+Again, you are expected to capture not only the results of this process, but artifacts of the decision-making process.
+
+### Demonstrated progress towards one or more of your next milestones:
+
+Clarity about what constitutes success in this milestone, in a paragraph.
+Each team member's responsibilities for reaching the milestone, with a status (complete, in progress, not started)
+Your validation process: again, how do you know that you have achieved this milestone?
+Demonstrating progress includes:

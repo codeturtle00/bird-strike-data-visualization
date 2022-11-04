@@ -2,7 +2,137 @@
 
 *Disclaimer: meeting notes might sometimes be chaotic, main decisions and discussions are summarized in the root README.md file. Please refer to it for the latest and most structured information.*
 
-Please be aware that this file is being regularly updated with most recent meeting notes coming up first.
+Please be aware that this file is being regularly updated with most recent meeting notes coming up first. So far we are trying to do weekly hourly sync meetings while working on each assignment.
+
+## November 03
+*Person taking notes: Dmytro*    
+*Person leading the discussion: Jacky*
+
+Agenda:
+* Go through the updates from everyone
+* Figure out what is needed to finish the assignment
+* Plan next steps
+
+Updates from Dmytro:
+* got a transformed CSV from Jacky and did EDA (expolarory data analysis)
+* provisioned an AWS RDS instance, configured security groups
+* loaded the data into the db, preaggregated it into the tables
+* came up with queries
+
+Updates from Henning:
+* Deployed back and frontend and added CD
+* Backend CD pipeline: a Docker image is built, the image is pushed to the repository (AWS ECR), and then to ECS.
+* Frontend CD pipeline: Build static files and sends them to the S3 bucket. All done through GitHub Actions.
+
+Next steps for Henning:
+- Work on backend, use the queries that Dmytro added
+- Create endpoints for Jacky
+- Add Tests
+
+Updates from Jacky:
+* 3 visualizations ready right now:
+  * We have a map. It requires coordinates, airport names, and # of bird strikes
+  * Bar chart for Aircraft models. Needs a list of incidents
+  * Total number of incidents and total fatality. Needs two separate numbers from the API
+
+* Looked into prettier and linting.
+* Will work on tests
+
+### Next steps
+Jacky needs to Provide typescript types to Henning for map markers. Will do tonight after dinner.
+Once Henning gives an endpoint, Jacky will use real data and deploy it (merge to master).
+
+Dmytro to send queries and credentials for data. Will do today.
+Will work on the docs for A2.
+
+Henning would use the queries and write endpoints + tests. Will do by Fri night.
+
+## October 26
+*Person taking notes: Henning*    
+*Person leading the discussion: Jacky*
+
+Agenda:
+* Go through the updates from everyone
+* Figure out what is needed to finish the assignment
+* Plan next steps
+
+
+Updates from Dmytro:
+* Researched the ability to pull data constantly from the FAA page. Turned out they are using a MS access format, which is almost impossible to deal with, especially automate. Moreover, they do not update the database that often for us to parse it every day.
+
+Updates from Henning:
+* Played with AWS to configure CD
+* Tried different services 
+* Confirmed that we are running tests for each commit. We do not want to block pushes if tests fail, we only block the deployment.
+
+Updates from Jacky:
+* completed summary and incidents bar graph, looking at how to visualize map
+
+### Next steps
+Dmytro needs to provision the db and come up with queries by next week.   
+Jacky needs to finish all three visualizations.   
+Henning has to complete the whole CD pipeline and develop endpoints by Nov 4.  
+ 
+
+## October 19
+*Person taking notes: Jacky*    
+*Person leading the discussion: Dmytro*
+
+Agenda:
+* Formalize deliverables in future milestones
+	* Task, Assignee, Deadline, Success metric
+* Pick out deliverables for this Assignment period
+	
+Features:
+
+we will create tickets in project board for devs with perhaps more details
+
+() = success metric
+
+1. Data Visualization (visually pleasing, present, functional)
+	* Interactive map with markers of incident locations and slidable timeseries so we can see the following:
+		* num Incidents by year
+		* num Injuries by year
+	* Summary stats
+		* Fatality rate, num incidents, interesting col stats
+	* Horizontal bar chart of top aricraft types to injuries
+2.  Responsiveness (remain functional and aesthetic on mobile down to 320px, tablet)
+3.  Deployment
+  	* implement web hook and deployment scripts to github repo
+	* AWS amplify for frontend, unverified 
+	* use other services for backend and job scheduler, TBD
+	* (pushes to master automatically deploys working web app for desktop and mobile)
+4.  Test Suite
+	* (75% test coverage + bring up sensible edge cases in code reviews)
+	* CI testing
+		* Add github actions for merge criteria (cant merge into main w/out tests and lint passing)
+
+5.  Daily Pull of FAA strike report 
+	* Pulling file - job scheduler in AWS will do all 3, ultimately writing to DB
+	* Transform into DB
+	* Precomputing Visualization Data and writing to DB
+	* (automatically executable without error every day)
+
+6. Twitter iframe window [because there's an account that live tweets plane crashes](https://twitter.com/AviationSafety?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)
+
+A2 TODOs:
+* Jacky works on Data Visualization
+	* MVP for bar chart, summary stats, map. Need to make or outline all API calls to backend. Doesn't need to be pretty or responsive (Fri, Oct 28)
+	* Report what frontend needs from backend (Wed, Oct 26)
+* Henning sets up CI
+	* CI/CD (Fri, Oct 28)
+	* Backend endpoints (Wed, Oct 26)
+* Dmytro works on pull and computation of FAA strike report, load into DB. Do not need to deliver daily pull for A2. (Sun, Oct 30)
+
+
+Introspective:
+* had trouble coming up with success metrics for testing
+* discussed pre-commit/merge restrictions
+	* enforced test coverage will slow down development 
+* scrapped twitter API integration milestone, replaced with feature #5 above
+	* discussed essence of why we wanted twitter live tweet stream feauture: basically we wanted some way to keep our users updated, our data relevant.
+* discussed heroku vs AWS to host job that'll daily pull FAA strike report 
+
 
 ## October 9
 
