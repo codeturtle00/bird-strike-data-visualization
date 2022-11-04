@@ -51,6 +51,10 @@ jobs:
     environment: production
 
     steps:
+    - name: Tests
+        working-directory: ./backend
+        run: npm test
+
     - name: Checkout
       uses: actions/checkout@v3
 
