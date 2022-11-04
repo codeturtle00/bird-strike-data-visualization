@@ -2,7 +2,7 @@
 
 *Disclaimer: meeting notes might sometimes be chaotic, main decisions and discussions are summarized in the root README.md file. Please refer to it for the latest and most structured information.*
 
-Please be aware that this file is being regularly updated with most recent meeting notes coming up first. So far we are trying to do weekly hourly sync meeting while working on each assignment.
+Please be aware that this file is being regularly updated with most recent meeting notes coming up first. So far we are trying to do weekly hourly sync meetings while working on each assignment.
 
 ## November 03
 *Person taking notes: Dmytro*    
