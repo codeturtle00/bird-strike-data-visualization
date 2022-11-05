@@ -2,6 +2,7 @@
 
 Successfully completed Assignment 2.  
 Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).
+Please see [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 
 # Quick Links
 
