@@ -50,7 +50,7 @@ export default function Map () {
         })
         .then((data) => {
           let formattedData: markersByYear = {}
-          data.foreach((entry: apiResponseEntry) => {
+          data.forEach((entry: apiResponseEntry) => {
             const marker: marker = {
               label: entry.AIRPORT,
               coordinates: [entry.LONGITUDE, entry.LATITUDE],
