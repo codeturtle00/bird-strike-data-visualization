@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import IncidentsPerAircraftBarGraph from "./IncidentsPerAircraftBarGraph";
 
-test("renders learn react link", () => {
+test("renders bar graph title", () => {
   render(<IncidentsPerAircraftBarGraph />);
-  const linkElement = screen.getByText("Bird Strikes Visualization");
-  expect(linkElement).toBeInTheDocument();
+  const text = screen.getByText("Number of Incidents by Aircraft model");
+  expect(text).toBeInTheDocument();
 });
