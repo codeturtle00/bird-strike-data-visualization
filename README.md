@@ -272,6 +272,6 @@ Our success in this milestone is determined by completing all steps that we plan
 
 ### Team Member's Responsibilities for reaching the milestone, with a status (complete, in progress, not started)
 
-Dmytro: focused on data-related work (db setup, deployment, data transformations, aggregations, etc)
-Jacky: focused on FrontEnd tasks, which included charts development and tests
-Henning: worked on BackEnd, creating endpoints and did CI/CD setup
+Dmytro: focused on data-related work (db setup, deployment, data transformations, aggregations, etc)    
+Jacky: focused on FrontEnd tasks, which included charts development and tests     
+Henning: worked on BackEnd, creating endpoints and did CI/CD setup     
