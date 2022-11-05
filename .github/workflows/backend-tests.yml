@@ -1,0 +1,21 @@
+
+name: Run Backend Tests
+
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-node@v3
+          with:
+            node-version: 18
+        - name: install
+          working-directory: ./backend
+          run: npm install
+        - name: frontend tests
+          working-directory: ./backend
+          run: npm test
