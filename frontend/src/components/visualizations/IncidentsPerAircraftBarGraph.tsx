@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,13 +7,14 @@ import {
   Title,
   Tooltip,
   Legend
-} from "chart.js";
-import { Bar } from "react-chartjs-2";
-import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants";
+} from "chart.js"
+import { Bar } from "react-chartjs-2"
+import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants"
 
 interface incidentsPerAircraft {
-  aircraft_model: string;
-  num_incidents: number;
+  index: number,
+  aircraft_mass: string,
+  num_injuries: number
 }
 
 ChartJS.register(
@@ -23,27 +24,27 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend
-);
+)
 
-function IncidentsPerAircraftBarGraph() {
+function IncidentsPerAircraftBarGraph () {
   const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<
-    incidentsPerAircraft[]
-  >([]);
+  incidentsPerAircraft[]
+  >([])
 
   const getIncidentsPerAircraft = () => {
     fetch(INCIDENTS_PER_AIRCRAFT_API)
       .then(async (response) => {
-        return await response.json();
+        return await response.json()
       })
       .then((data) => {
-        setIncidentsPerAircraft(data as incidentsPerAircraft[]);
-      });
-  };
+        setIncidentsPerAircraft(data as incidentsPerAircraft[])
+      })
+  }
 
-  getIncidentsPerAircraft();
-  const labels = incidentsPerAircraft.map((x) => x.aircraft_model);
-  const data = incidentsPerAircraft.map((x) => x.num_incidents);
-  console.log(labels);
+  getIncidentsPerAircraft()
+  const labels = incidentsPerAircraft.map((x) => x.aircraft_mass)
+  const data = incidentsPerAircraft.map((x) => x.num_injuries)
+  console.log(labels)
 
   return (
     <div>
@@ -61,7 +62,7 @@ function IncidentsPerAircraftBarGraph() {
         }}
       />
     </div>
-  );
+  )
 }
 
-export default IncidentsPerAircraftBarGraph;
+export default IncidentsPerAircraftBarGraph

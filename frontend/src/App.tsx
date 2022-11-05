@@ -1,17 +1,16 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import "./App.css";
-import Map from "./components/visualizations/Map";
-import IncidentsPerAircraftBarGraph from "./components/visualizations/IncidentsPerAircraftBarGraph";
-import Summary from "./components/Summary";
+import "./App.css"
+// import Map from "./components/visualizations/Map"
+// import IncidentsPerAircraftBarGraph from "./components/visualizations/IncidentsPerAircraftBarGraph"
+import Summary from "./components/Summary"
 
-function App() {
+function App () {
   return (
     <>
       <Summary />
-      <IncidentsPerAircraftBarGraph />
-      <Map />
+      {/* <IncidentsPerAircraftBarGraph />
+      <Map /> */}
     </>
-  );
+  )
 }
 
-export default App;
+export default App

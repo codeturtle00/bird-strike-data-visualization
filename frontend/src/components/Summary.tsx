@@ -1,29 +1,39 @@
-import { useState } from "react";
-import { FATALITY_RATE, TOTAL_INCIDENTS } from "../constants";
+import { useEffect, useState } from "react"
+import { FATALITY_RATE, TOTAL_INCIDENTS } from "../constants"
 
-function Summary() {
-  const [totalNumIncidents, setTotalNumIncidents] = useState(0);
-  const [fatalityRate, setFatalityRate] = useState(0);
+function Summary () {
+  const [totalNumIncidents, setTotalNumIncidents] = useState(0)
+  const [fatalityRate, setFatalityRate] = useState(0)
+
+  interface totalIncidentsResponse {
+    count: string
+  }
+  interface fatalityRateResponse {
+    fatality_rate: number
+  }
 
   const getStats = () => {
     fetch(TOTAL_INCIDENTS)
-      .then((response) => {
-        return response.json();
+      .then(async (response) => {
+        return await response.json()
       })
       .then((data) => {
-        setTotalNumIncidents(data);
-      });
+        console.log(data as totalIncidentsResponse)
+      })
 
     fetch(FATALITY_RATE)
-      .then((response) => {
-        return response.json();
+      .then(async (response) => {
+        return await response.json()
       })
       .then((data) => {
-        setFatalityRate(data);
-      });
-  };
+        console.log(data as fatalityRateResponse)
 
-  getStats();
+      })
+  }
+
+  useEffect(() => {
+    getStats();
+  }, []);
 
   return (
     <div>
@@ -34,7 +44,7 @@ function Summary() {
         <li>(TODO: other interesting stats)</li>
       </ul>
     </div>
-  );
+  )
 }
 
-export default Summary;
+export default Summary

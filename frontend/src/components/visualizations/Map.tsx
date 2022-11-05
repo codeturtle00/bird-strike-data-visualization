@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 import {
   ComposableMap,
   Geographies,
   Geography,
   Marker
-} from "react-simple-maps";
+} from "react-simple-maps"
 
 const markers = [
   {
@@ -23,13 +23,13 @@ const markers = [
   { markerOffset: 25, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
   { markerOffset: -15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
   { markerOffset: -15, name: "Lima", coordinates: [-77.0428, -12.0464] }
-];
+]
 
-export default function Map() {
-  const [currYear, setCurrYear] = useState(2012);
+export default function Map () {
+  const [currYear, setCurrYear] = useState(2012)
 
-  const minYear = 1990; // TODO: query for this
-  const maxYear = 2022; // TODO: query for this
+  const minYear = 1990 // TODO: query for this
+  const maxYear = 2022 // TODO: query for this
 
   return (
     <div>
@@ -74,5 +74,5 @@ export default function Map() {
         id="myRange"
       ></input>
     </div>
-  );
+  )
 }
