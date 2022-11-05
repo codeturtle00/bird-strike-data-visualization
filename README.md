@@ -275,3 +275,5 @@ Our success in this milestone is determined by completing all steps that we plan
 Dmytro: focused on data-related work (db setup, deployment, data transformations, aggregations, etc)    
 Jacky: focused on FrontEnd tasks, which included charts development and tests     
 Henning: worked on BackEnd, creating endpoints and did CI/CD setup     
+
+The status of the tasks can also be tracked on our GitHub Projects dashboard
