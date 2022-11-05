@@ -36,34 +36,36 @@ export default function Map () {
   const [currYear, setCurrYear] = useState(2012)
   const [markersByYear, setMarkersByYear] = useState<markersByYear>({})
   const [position, setPosition] = useState<positionState>({ coordinates: [0, 0], zoom: 1 });
-
-  let minYear = DEFAULT_MIN_YEAR
-  let maxYear = DEFAULT_MAX_YEAR
-
-  const getDatapoints = () => {
-    fetch(DATAPOINTS_BY_YEAR_API)
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then((data) => {
-        let formattedData: markersByYear = {}
-        data.map((entry: apiResponseEntry) => {
-          const marker: marker = {
-            label: entry.AIRPORT,
-            coordinates: [entry.LONGITUDE, entry.LATITUDE],
-            num_incidents: parseInt(entry.NUM_INCIDENTS)
-          } 
-          formattedData[parseInt(entry.INCIDENT_YEAR)] = formattedData[parseInt(entry.INCIDENT_YEAR)] || []
-          formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
-          minYear = Math.min(minYear, parseInt(entry.INCIDENT_YEAR))
-          maxYear = Math.max(maxYear, parseInt(entry.INCIDENT_YEAR))
-        })
-        setMarkersByYear(formattedData)
-      })
-      .catch(err => console.log("Error fetching: ", err))
-  }
+  const [minYear, setMinYear] = useState(DEFAULT_MIN_YEAR)
+  const [maxYear, setMaxYear] = useState(DEFAULT_MAX_YEAR)
 
   useEffect(() => {
+    let minYear = DEFAULT_MIN_YEAR
+    let maxYear = DEFAULT_MAX_YEAR
+
+    const getDatapoints = () => {
+      fetch(DATAPOINTS_BY_YEAR_API)
+        .then(async (response) => {
+          return await response.json()
+        })
+        .then((data) => {
+          let formattedData: markersByYear = {}
+          data.foreach((entry: apiResponseEntry) => {
+            const marker: marker = {
+              label: entry.AIRPORT,
+              coordinates: [entry.LONGITUDE, entry.LATITUDE],
+              num_incidents: parseInt(entry.NUM_INCIDENTS)
+            } 
+            formattedData[parseInt(entry.INCIDENT_YEAR)] = formattedData[parseInt(entry.INCIDENT_YEAR)] || []
+            formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
+            setMinYear(Math.min(minYear, parseInt(entry.INCIDENT_YEAR)))
+            setMaxYear(Math.max(maxYear, parseInt(entry.INCIDENT_YEAR)))
+          })
+          setMarkersByYear(formattedData)
+        })
+        .catch(err => console.log("Error fetching: ", err))
+    }
+
     getDatapoints()
   }, []);
 
@@ -106,8 +108,8 @@ export default function Map () {
       Year: {currYear}
       <input
         type="range"
-        min={minYear==DEFAULT_MIN_YEAR ? 1990 : minYear}
-        max={maxYear==DEFAULT_MAX_YEAR ? 2022 : maxYear}
+        min={minYear===DEFAULT_MIN_YEAR ? 1990 : minYear}
+        max={maxYear===DEFAULT_MAX_YEAR ? 2022 : maxYear}
         value={currYear}
         onChange={(e) => setCurrYear(e.target.valueAsNumber)}
         className="slider"
