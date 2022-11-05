@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import { useState } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -7,11 +6,10 @@ import {
   BarElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants";
-
 
 interface incidentsPerAircraft {
   aircraft_model: string;
@@ -28,18 +26,21 @@ ChartJS.register(
 );
 
 function IncidentsPerAircraftBarGraph() {
-  const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<incidentsPerAircraft[]>([]);
+  const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<
+    incidentsPerAircraft[]
+  >([]);
 
   const getIncidentsPerAircraft = () => {
     fetch(INCIDENTS_PER_AIRCRAFT_API)
-      .then((response) => {
-        return response.json();
+      .then(async (response) => {
+        return await response.json();
       })
       .then((data) => {
-        setIncidentsPerAircraft(data as any as incidentsPerAircraft[]);
+        setIncidentsPerAircraft(data as incidentsPerAircraft[]);
       });
-  }
+  };
 
+  getIncidentsPerAircraft();
   const labels = incidentsPerAircraft.map((x) => x.aircraft_model);
   const data = incidentsPerAircraft.map((x) => x.num_incidents);
   console.log(labels);
@@ -49,14 +50,14 @@ function IncidentsPerAircraftBarGraph() {
       <h1>Number of Incidents by Aircraft model</h1>
       <Bar
         data={{
-          labels: labels,
+          labels,
           datasets: [
             {
               label: "Num. Incidents",
-              data: data,
-              backgroundColor: "rgba(53, 162, 235, 1)",
-            },
-          ],
+              data,
+              backgroundColor: "rgba(53, 162, 235, 1)"
+            }
+          ]
         }}
       />
     </div>

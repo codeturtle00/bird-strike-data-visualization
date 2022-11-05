@@ -12,4 +12,7 @@ parserOptions:
     - tsconfig.json
 plugins:
   - react
-rules: {}
+rules: { "quotes": "off", 
+"@typescript-eslint/quotes": "off",
+"@typescript-eslint/no-unused-vars": "off",
+"@typescript-eslint/explicit-function-return-type": "off" }

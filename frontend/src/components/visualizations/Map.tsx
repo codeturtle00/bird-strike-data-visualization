@@ -6,9 +6,6 @@ import {
   Marker
 } from "react-simple-maps";
 
-const geoUrl =
-  "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
-
 const markers = [
   {
     markerOffset: -15,
@@ -31,9 +28,6 @@ const markers = [
 export default function Map() {
   const [currYear, setCurrYear] = useState(2012);
 
-  const geoUrl =
-    "https://raw.githubusercontent.com/deldersveld/topojson/master/world-countries.json";
-
   const minYear = 1990; // TODO: query for this
   const maxYear = 2022; // TODO: query for this
 
@@ -49,14 +43,6 @@ export default function Map() {
                 style={{
                   default: {
                     fill: "#D6D6DA",
-                    outline: "none"
-                  },
-                  hover: {
-                    fill: "#F53",
-                    outline: "none"
-                  },
-                  pressed: {
-                    fill: "#E42",
                     outline: "none"
                   }
                 }}
