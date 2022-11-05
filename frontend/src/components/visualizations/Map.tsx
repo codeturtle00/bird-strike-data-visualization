@@ -58,13 +58,8 @@ export default function Map () {
             } 
             formattedData[parseInt(entry.INCIDENT_YEAR)] = formattedData[parseInt(entry.INCIDENT_YEAR)] || []
             formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
-            if (currYear === 0) {
-              setCurrYear(parseInt(entry.INCIDENT_YEAR))
-            }
             minYearInData = Math.min(minYearInData, parseInt(entry.INCIDENT_YEAR))
             maxYearInData = Math.max(maxYearInData, parseInt(entry.INCIDENT_YEAR))
-            console.log(minYear, parseInt(entry.INCIDENT_YEAR))
-            console.log(Math.min(minYear, parseInt(entry.INCIDENT_YEAR)))
           })
           setMarkersByYear(formattedData)
           setMinYear(minYearInData)
