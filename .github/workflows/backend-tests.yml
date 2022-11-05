@@ -17,9 +17,10 @@ jobs:
           working-directory: ./backend
           run: npm install
         - name: create env file
+          working-directory: ./backend
           run: |
             touch .env
-            echo DB_URL=${{ secrets.ENGINE_API_KEY }} >> .env
+            echo DB_URL=${{ secrets.DB_URL }} >> .env
         - name: backend tests
           working-directory: ./backend
           run: npm test
