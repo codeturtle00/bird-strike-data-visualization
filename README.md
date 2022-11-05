@@ -1,7 +1,7 @@
 # Bird Strikes Visualization (CSC302 Project)
 
 Successfully completed Assignment 2.  
-Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).
+Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).   
 Please see [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 
 # Quick Links
@@ -11,6 +11,7 @@ Please see [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-s
 - [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
 - [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
 - [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
+- [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 - [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion)
 
 # Project Overview
