@@ -52,7 +52,7 @@ jobs:
 
     steps:
     - name: Tests
-      working-directory: ./backend
+      working-directory: backend
       run: npm test
 
     - name: Checkout
