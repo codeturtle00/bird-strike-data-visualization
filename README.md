@@ -252,14 +252,14 @@ To implement new visualizations, the work needs to be done on all three layers o
 
 Artifacts of the decision-making process are our weeky meeting notes. Please see [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md) for more details.
 
-### Demonstrated progress towards one or more of your next milestones:
+### Demonstrated progress towards one or more of your next milestones
 
 Here are our previous next steps, determined after Assignment 1 completion:
 - Database server setup, loading the data into it, query preparation - Dmytro
 - Chart creation in the React app, communicating with Backend to get the data - Jacky
 - Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
 
-**How do you know that you have achieved this milestone?**
+**How do you know that you have achieved this milestone?**    
 All of above tasks are successfully completed based on our acceptance criteria.
 
 * Our database is now hosted on AWS RDS and is accessible and available. Queries successfully return the data
