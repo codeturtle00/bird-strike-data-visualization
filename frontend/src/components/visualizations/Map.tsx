@@ -1,39 +1,85 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import {
   ComposableMap,
   Geographies,
   Geography,
-  Marker
+  Marker,
+  ZoomableGroup
 } from "react-simple-maps"
+import { DATAPOINTS_BY_YEAR_API } from "../../constants"
 
-const markers = [
-  {
-    markerOffset: -15,
-    name: "Buenos Aires",
-    coordinates: [-58.3816, -34.6037]
-  },
-  { markerOffset: -15, name: "La Paz", coordinates: [-68.1193, -16.4897] },
-  { markerOffset: 25, name: "Brasilia", coordinates: [-47.8825, -15.7942] },
-  { markerOffset: 25, name: "Santiago", coordinates: [-70.6693, -33.4489] },
-  { markerOffset: 25, name: "Bogota", coordinates: [-74.0721, 4.711] },
-  { markerOffset: 25, name: "Quito", coordinates: [-78.4678, -0.1807] },
-  { markerOffset: -15, name: "Georgetown", coordinates: [-58.1551, 6.8013] },
-  { markerOffset: -15, name: "Asuncion", coordinates: [-57.5759, -25.2637] },
-  { markerOffset: 25, name: "Paramaribo", coordinates: [-55.2038, 5.852] },
-  { markerOffset: 25, name: "Montevideo", coordinates: [-56.1645, -34.9011] },
-  { markerOffset: -15, name: "Caracas", coordinates: [-66.9036, 10.4806] },
-  { markerOffset: -15, name: "Lima", coordinates: [-77.0428, -12.0464] }
-]
+const DEFAULT_MIN_YEAR = 999999
+const DEFAULT_MAX_YEAR = 0
+
+interface apiResponseEntry {
+  INCIDENT_YEAR: string,
+  LATITUDE: number,
+  LONGITUDE: number,
+  AIRPORT: string,
+  NUM_INCIDENTS: string,
+}
+
+interface markersByYear {[year: number]: marker[]}
+
+type marker = {
+  label: string,
+  coordinates: [number, number]
+  num_incidents: number,
+}
+
+interface positionState {
+  coordinates: [number, number],
+  zoom: number
+}
 
 export default function Map () {
   const [currYear, setCurrYear] = useState(2012)
+  const [markersByYear, setMarkersByYear] = useState<markersByYear>({})
+  const [position, setPosition] = useState<positionState>({ coordinates: [0, 0], zoom: 1 });
 
-  const minYear = 1990 // TODO: query for this
-  const maxYear = 2022 // TODO: query for this
+  let minYear = DEFAULT_MIN_YEAR
+  let maxYear = DEFAULT_MAX_YEAR
+
+  const getDatapoints = () => {
+    fetch(DATAPOINTS_BY_YEAR_API)
+      .then(async (response) => {
+        return await response.json()
+      })
+      .then((data) => {
+        let formattedData: markersByYear = {}
+        data.map((entry: apiResponseEntry) => {
+          const marker: marker = {
+            label: entry.AIRPORT,
+            coordinates: [entry.LONGITUDE, entry.LATITUDE],
+            num_incidents: parseInt(entry.NUM_INCIDENTS)
+          } 
+          formattedData[parseInt(entry.INCIDENT_YEAR)] = formattedData[parseInt(entry.INCIDENT_YEAR)] || []
+          formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
+          minYear = Math.min(minYear, parseInt(entry.INCIDENT_YEAR))
+          maxYear = Math.max(maxYear, parseInt(entry.INCIDENT_YEAR))
+        })
+        setMarkersByYear(formattedData)
+      })
+      .catch(err => console.log("Error fetching: ", err))
+  }
+
+  useEffect(() => {
+    getDatapoints()
+  }, []);
+
+  function handleMoveEnd(position: any) {
+    setPosition(position);
+  }
 
   return (
     <div>
+      <h3>Map of Incidents by Year</h3>
       <ComposableMap>
+        <ZoomableGroup
+            zoom={position.zoom}
+            center={position.coordinates}
+            onMoveEnd={handleMoveEnd}
+          >
         <Geographies geography="/map.json">
           {({ geographies }: any) =>
             geographies.map((geo: { rsmKey: React.Key | null | undefined }) => (
@@ -50,24 +96,18 @@ export default function Map () {
             ))
           }
         </Geographies>
-        {markers.map(({ name, coordinates, markerOffset }) => (
-          <Marker key={name} coordinates={coordinates as [number, number]}>
-            <circle r={10} fill="#F00" stroke="#fff" strokeWidth={2} />
-            <text
-              textAnchor="middle"
-              y={markerOffset}
-              style={{ fontFamily: "system-ui", fill: "#5D5A6D" }}
-            >
-              {name}
-            </text>
+        {(markersByYear[currYear] || []).map(({ label, coordinates }) => (
+          <Marker key={label} coordinates={coordinates as [number, number]}>
+            <circle r={1} fill="#F00" />
           </Marker>
         ))}
+        </ZoomableGroup>
       </ComposableMap>
       Year: {currYear}
       <input
         type="range"
-        min={minYear}
-        max={maxYear}
+        min={minYear==DEFAULT_MIN_YEAR ? 1990 : minYear}
+        max={maxYear==DEFAULT_MAX_YEAR ? 2022 : maxYear}
         value={currYear}
         onChange={(e) => setCurrYear(e.target.valueAsNumber)}
         className="slider"

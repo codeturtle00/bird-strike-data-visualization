@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -13,8 +13,8 @@ import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants"
 
 interface incidentsPerAircraft {
   index: number,
-  aircraft_mass: string,
-  num_injuries: number
+  AC_MASS: string,
+  NR_INJURIES: number
 }
 
 ChartJS.register(
@@ -39,16 +39,20 @@ function IncidentsPerAircraftBarGraph () {
       .then((data) => {
         setIncidentsPerAircraft(data as incidentsPerAircraft[])
       })
+      .catch(err => console.log("Error fetching: ", err))
   }
 
-  getIncidentsPerAircraft()
-  const labels = incidentsPerAircraft.map((x) => x.aircraft_mass)
-  const data = incidentsPerAircraft.map((x) => x.num_injuries)
-  console.log(labels)
+  useEffect(() => {
+    getIncidentsPerAircraft()
+  }, []);
+
+  
+  const labels = incidentsPerAircraft.map((x) => x.AC_MASS)
+  const data = incidentsPerAircraft.map((x) => x.NR_INJURIES)
 
   return (
     <div>
-      <h1>Number of Incidents by Aircraft model</h1>
+      <h3>Number of Incidents by Aircraft model</h3>
       <Bar
         data={{
           labels,

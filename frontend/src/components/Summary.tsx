@@ -2,8 +2,8 @@ import { useEffect, useState } from "react"
 import { FATALITY_RATE, TOTAL_INCIDENTS } from "../constants"
 
 function Summary () {
-  const [totalNumIncidents, setTotalNumIncidents] = useState(0)
-  const [fatalityRate, setFatalityRate] = useState(0)
+  const [totalNumIncidents, setTotalNumIncidents] = useState("")
+  const [fatalityRate, setFatalityRate] = useState(0.0)
 
   interface totalIncidentsResponse {
     count: string
@@ -14,21 +14,22 @@ function Summary () {
 
   const getStats = () => {
     fetch(TOTAL_INCIDENTS)
-      .then(async (response) => {
-        return await response.json()
-      })
+      .then(async (response) => response.json())
       .then((data) => {
-        console.log(data as totalIncidentsResponse)
+        const response = data[0] as totalIncidentsResponse
+        setTotalNumIncidents(response.count)
       })
+      .catch(err => console.log("Error fetching: ", err))
 
     fetch(FATALITY_RATE)
       .then(async (response) => {
         return await response.json()
       })
       .then((data) => {
-        console.log(data as fatalityRateResponse)
-
+        const response = data[0] as fatalityRateResponse
+        setFatalityRate(response.fatality_rate)
       })
+      .catch(err => console.log("Error fetching: ", err))
   }
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function Summary () {
 
   return (
     <div>
-      <h1>Summary</h1>
+      <h3>Summary</h3>
       <ul>
         <li>Total number of report incidents: {totalNumIncidents}</li>
         <li>Fatality Rate: {fatalityRate}</li>
