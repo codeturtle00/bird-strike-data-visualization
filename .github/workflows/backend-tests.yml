@@ -21,6 +21,7 @@ jobs:
           run: |
             touch .env
             echo DB_URL=${{ secrets.DB_URL }} >> .env
+            cat .env
         - name: backend tests
           working-directory: ./backend
           run: npm test
