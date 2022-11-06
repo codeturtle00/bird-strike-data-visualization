@@ -1,0 +1,24 @@
+## What goals have been achieved
+ 
+* Bootstrapped app (frontend, backend, db)
+* Setup basic dataflow (simple frontend visualization that hits an endpoint on backend, which pulls data from db)
+* Script to set up and deploy locally on docker
+* Basic tests 
+* Documentation and processes in place
+ 
+## What goals have been missed, and by how much
+
+* Did not implement backend testing by two weeks, due to not having enough complexity in backend to write test suite at this point
+ 
+## How plans will need to be adjusted, based on remaining time available and project scope.
+
+At first, Milestone 3 has been revised from pulling twitter data to pulling FAA bird strike data. Later on, it proved to be not efficient given that the FAA data was very difficult to access, so we pivoted to including a Twitter live feed widget to our website.
+Based on feature priorities, this feature will be implemented in Milestones 3 as it is less important than other features (namely, frontend visualization and backend endpoints). 
+Consequently, we will push back on this feature towards the end of milestone 3, as mark it as a "nice to have" so that if time constraints do not permit its implementation, we can drop it.
+ 
+## What, if any, adjustments or decisions need to be made in light of what we have learned about project scope and capacity since. 
+
+* Decided not to interact with Twitter API directly (as we were planning in the beginning). The reasons for this decision are:
+* The data we were planning to pull is less relevant to our questions as we pivoted to exploring bird strike data
+* We proposed a other new features such as displaying more meaningful visualizations
+* Planned another feature to add a twitter iframe that shares live tweets by AviationSafety that report airplane crashes in real time

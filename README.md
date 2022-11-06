@@ -1,7 +1,8 @@
 # Bird Strikes Visualization (CSC302 Project)
 
 Successfully completed Assignment 2.  
-Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).
+Please see the related comments in a separate [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion).   
+Please see [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 
 # Quick Links
 
@@ -10,6 +11,7 @@ Please see the related comments in a separate [Assignment 2 Discussion](https://
 - [Roadmap](https://github.com/codeturtle00/bird-strike-data-visualization#roadmap)
 - [Detailed Process Documentation](https://github.com/codeturtle00/bird-strike-data-visualization#detailed-process-documentation)
 - [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
+- [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 - [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion)
 
 # Project Overview
@@ -64,25 +66,26 @@ To run tests, run
 
 Our roadmap currently consists of three milestones.
 
-**Milestone 1:**
+**Milestone 1:** (Done in Assignment 1)
 
 - Bootstrapped app
 - Functionality to dockerize and easily spin up app
 - Basic tests
 - Documentation and processes in place
 
-**Milestone 2:**
+**Milestone 2:** (Done in Assignment 2)
 
-- Data visualizations for our Top-5 questions
+- Data visualizations for our Top-3 questions
 - Deployed app
 - CI & CD implementation
 - Hosting the database and integrating it with backend
 
-**Milestone 3:**
+**Milestone 3:** (In progress)
 
-- Backend to interact with Twitter API
-- Live data stream analysis for live tweets
-- Frontend integration with Backend to display live plane crash data
+- Add more visulizations (at least 3 more) to show characteristics of the data set
+- Frontend to include relevant Twitter feed
+- Improve CI&CD: Add code linting and style checks
+- Segragate the database into dev and prod instances. Allow the local db instantiation.
 
 At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
 
@@ -103,12 +106,6 @@ Management responsibilities:
 - Monitor project progress and set deadlines, take notes
 
 We expect to rotate the above management roles every two weeks. Our meeting agendas will contain role assignments.
-
-## Immediate Next Actions
-
-- Database server setup, loading the data into it, query preparation - Dmytro
-- Chart creation in the React app, communicating with Backend to get the data - Jacky
-- Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
 
 # Detailed Process Documentation
 
@@ -217,19 +214,68 @@ The only dataset that all of us liked was the last one, which we decided to use.
 
 ## Assignment 2 Discussion
 
-### A description of the features your project intends to implement (or next steps that you need to pursue) with sub-tasks prioritized.
+### Next Features and Steps
 
-TODO:
-These descriptions should involve:
-The rationale behind how those features have been prioritized.
-A relatively specific breakdown of what needs to be done to deliver each of these features.
-What specific tasks need to be accomplished - by which people, due on what days, and
-What acceptance criteria exist for these features - in other words, how will you know that this work is finished?
-Again, you are expected to capture not only the results of this process, but artifacts of the decision-making process.
+Priority #1 features:
 
-### Demonstrated progress towards one or more of your next milestones:
+* Create new visualizations of our data:
+  * More single number stats: total repair costs, # of dead birds, etc
+  * Plot of the passenger distribution on the planes
+  * Most vulnerable flight phase to be impacted by bird strikes
+  * Most affected bird species by the incidents
 
-Clarity about what constitutes success in this milestone, in a paragraph.
-Each team member's responsibilities for reaching the milestone, with a status (complete, in progress, not started)
-Your validation process: again, how do you know that you have achieved this milestone?
-Demonstrating progress includes:
+Priority #2 features:
+* Frontend to include relevant Twitter feed -- Jacky
+* Improve CI&CD: Add code linting and style checks -- Henning
+* Segragate the database into dev and prod env -- Dmytro
+
+**How those features have been prioritized?**
+
+To determine the priorities, we went back to our original goal, which is to showcase interesting features of our dataset.
+
+Therefore, the most important feature for us is to improve and add new visualization of our data to the website.
+
+The next features have been determined based on our votes and opinions of what could be most useful. We all believed that having a live Twitter feed on the website reporting plane crashes would be interesting to the users and serve our main purpose.
+
+Additionally, we wanted to improve our development, that is why we decided to improve CI&CD and segregate db environment. This is meant to make our development stronger to enable more flexible, robust, and fast delivery.
+
+**What needs to be done to deliver each of these features?**
+
+To implement new visualizations, the work needs to be done on all three layers of our app: FrontEnd, BackEnd, and Database. Below is a break-down of tasks:
+* Work on FrontEnd code to create new charts and display the data responsively -- Jacky, due December 1.
+* Develop Backend API endpoints to query the data from -- Henning, due November 25.
+* Create database aggregations, tables, and queries to extract the stats from raw data -- Dmytro, due November 20.
+
+**Acceptance Criteria**
+
+* The FrontEnd displays all 6 visualizations for the data and is viewable from all devices. Moreover, it needs to pass all tests, which cover at least 60% of the code.
+* The Backend has endpoints for all visualization, responds to requests, and passes all tests
+* The database has two environments, and contains enough data to satisfy the visualization needs
+
+Artifacts of the decision-making process are our weeky meeting notes. Please see [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md) for more details.
+
+### Demonstrated progress towards one or more of your next milestones
+
+Here are our previous next steps, determined after Assignment 1 completion:
+- Database server setup, loading the data into it, query preparation - Dmytro
+- Chart creation in the React app, communicating with Backend to get the data - Jacky
+- Backend implementation to talk to the database and provide endpoints for Frontend, app deployment - Henning
+
+**How do you know that you have achieved this milestone?**    
+All of above tasks are successfully completed based on our acceptance criteria.
+
+* Our database is now hosted on AWS RDS and is accessible and available. Queries successfully return the data
+* The database contains all data that we rely on as confirmed by several tests
+* Charts are now developed and deployed at http://bird-strike-frontend-bucket.s3-website.us-east-2.amazonaws.com/
+* The Frontend is responsive and passes tests
+* The backend talks to the database and exposes all required endpoints accessible at http://3.16.78.249:3001/
+
+Our success in this milestone is determined by completing all steps that we planned, which can be clearly verified. Our app is now deployed and is already useful to explore the dataset.
+
+### Team Member's Responsibilities for reaching the milestone, with a status (complete, in progress, not started)
+
+Dmytro: focused on data-related work (db setup, deployment, data transformations, aggregations, etc)    
+Jacky: focused on FrontEnd tasks, which included charts development and tests     
+Henning: worked on BackEnd, creating endpoints and did CI/CD setup     
+
+The status of the tasks can also be tracked on our GitHub Projects dashboard
