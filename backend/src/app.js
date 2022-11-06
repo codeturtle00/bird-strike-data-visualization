@@ -1,5 +1,7 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
+
 
 const bird_strike_model = require("./bird_strike_model");
 

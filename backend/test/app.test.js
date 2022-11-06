@@ -1,6 +1,7 @@
 const request = require("supertest");
 const app = require("../src/app");
 const model = require("../src/bird_strike_model");
+console.log(process.env.DB_URL)
 
 describe("Test endpoints", () => {
   afterAll((done) => {
