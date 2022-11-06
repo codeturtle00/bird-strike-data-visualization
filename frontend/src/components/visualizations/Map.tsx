@@ -33,15 +33,13 @@ interface positionState {
 }
 
 export default function Map () {
-  const [currYear, setCurrYear] = useState(2012)
+  const [currYear, setCurrYear] = useState(0)
   const [markersByYear, setMarkersByYear] = useState<markersByYear>({})
   const [position, setPosition] = useState<positionState>({ coordinates: [0, 0], zoom: 1 });
   const [minYear, setMinYear] = useState(DEFAULT_MIN_YEAR)
   const [maxYear, setMaxYear] = useState(DEFAULT_MAX_YEAR)
 
   useEffect(() => {
-    let minYear = DEFAULT_MIN_YEAR
-    let maxYear = DEFAULT_MAX_YEAR
 
     const getDatapoints = () => {
       fetch(DATAPOINTS_BY_YEAR_API)
@@ -50,6 +48,8 @@ export default function Map () {
         })
         .then((data) => {
           let formattedData: markersByYear = {}
+          let minYearInData = DEFAULT_MIN_YEAR
+          let maxYearInData = DEFAULT_MAX_YEAR
           data.forEach((entry: apiResponseEntry) => {
             const marker: marker = {
               label: entry.AIRPORT,
@@ -58,10 +58,13 @@ export default function Map () {
             } 
             formattedData[parseInt(entry.INCIDENT_YEAR)] = formattedData[parseInt(entry.INCIDENT_YEAR)] || []
             formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
-            setMinYear(Math.min(minYear, parseInt(entry.INCIDENT_YEAR)))
-            setMaxYear(Math.max(maxYear, parseInt(entry.INCIDENT_YEAR)))
+            minYearInData = Math.min(minYearInData, parseInt(entry.INCIDENT_YEAR))
+            maxYearInData = Math.max(maxYearInData, parseInt(entry.INCIDENT_YEAR))
           })
           setMarkersByYear(formattedData)
+          setMinYear(minYearInData)
+          setMaxYear(maxYearInData)
+          setCurrYear(maxYearInData)
         })
         .catch(err => console.log("Error fetching: ", err))
     }
