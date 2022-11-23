@@ -4,6 +4,55 @@
 
 Please be aware that this file is being regularly updated with most recent meeting notes coming up first. So far we are trying to do weekly hourly sync meetings while working on each assignment.
 
+
+## November 23
+*Person taking notes: Dmytro*    
+*Person leading the discussion: Jacky*
+
+Agenda:
+* Sync/Refresh on project state
+* Figure out what is needed to finish the assignment
+* Plan next steps
+
+Next features discussion:
+* display data on map point hover 
+* show number of incidents over time (years)
+* visualize / investigate incidents by month (see if correlation with bird migration)
+* incidents by flight phase
+* incidents by airline
+* incidents by bird species (pie chart)
+
+
+Updates from Dmytro:
+
+Next steps for Dmytro:
+* write queries for new data that we need (Nov. 24)
+* presentation slides
+
+Updates from Henning:
+* should leverage AWS secrets manager
+
+Next steps for Henning:
+* enforce linting on push (Nov. 28)
+* leverage AWS secrets manager (Nov. 28)
+* expose endpoints for new queries (Nov. 28)
+* add additional testing to backend (Nov. 28)
+* add logging to backend (Nov. 28)
+
+Updates from Jacky:
+* showing visualizations, discussion about what end product should look like
+
+Next Steps for Jacky:
+* add visualization on map point hover (Nov. 28)
+* improve UI (Nov. 30)
+* add responsiveness (Nov. 30)
+* twitter widget
+
+### Next steps
+* Finish above next steps
+* Then practice presentation
+
+
 ## November 03
 *Person taking notes: Dmytro*    
 *Person leading the discussion: Jacky*
