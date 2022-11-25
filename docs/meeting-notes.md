@@ -6,8 +6,8 @@ Please be aware that this file is being regularly updated with most recent meeti
 
 
 ## November 23
-*Person taking notes: Dmytro*    
-*Person leading the discussion: Jacky*
+*Person taking notes: Henning*    
+*Person leading the discussion: Dmytro*
 
 Agenda:
 * Sync/Refresh on project state
