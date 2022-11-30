@@ -4,6 +4,26 @@
 
 Please be aware that this file is being regularly updated with most recent meeting notes coming up first. So far we are trying to do weekly hourly sync meetings while working on each assignment.
 
+## November 30
+*Person taking notes: Jacky*    
+*Person leading the discussion: Henning*
+
+Agenda:
+* Quick sync on individual progress
+* Discuss presentation content 
+* Assign concrete deadlines
+
+Updates:
+* Dmytro showed the queries needed for our final additional features
+* Jacky showed state of frontend
+* Henning discussed endpoints and logging we'll need to implement
+* Briefly reviewed previous meeting and post mortem docs and match them to criteria for final presentation
+
+Deadlines:
+* (Dmytro) Finish presentation slides draft Friday night, we will review on weekend
+* (Henning) Implement logging and residual endpoints by Friday
+* (Jacky) Finished frontend product by Sunday
+
 
 ## November 23
 *Person taking notes: Henning*    
