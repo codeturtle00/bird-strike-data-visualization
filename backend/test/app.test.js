@@ -39,6 +39,51 @@ describe("Test endpoints", () => {
       });
   });
 
+  test("GET /incidents-by-month has code 200 and returns data", () => {
+    return request(app)
+      .get("/incidents-by-month")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
+  });
+
+  test("GET /incidents-by-year has code 200 and returns data", () => {
+    return request(app)
+      .get("/incidents-by-year")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
+  });
+
+  test("GET /incidents-by-flight-path has code 200 and returns data", () => {
+    return request(app)
+      .get("/incidents-by-flight-path")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
+  });
+
+  test("GET /incidents-by-airline has code 200 and returns data", () => {
+    return request(app)
+      .get("/incidents-by-airline")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
+  });
+
+  test("GET /incidents-by-bird-species has code 200 and returns data", () => {
+    return request(app)
+      .get("/incidents-by-bird-species")
+      .then((response) => {
+        expect(response.statusCode).toBe(200);
+        expect(response.body.length).toBeGreaterThan(0);
+      });
+  });
+
   test("GET /total-incidents has code 200 and returns data", () => {
     return request(app)
       .get("/total-incidents")

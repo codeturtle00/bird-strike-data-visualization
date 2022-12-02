@@ -54,7 +54,82 @@ const getTotalIncidents = () => {
   });
 };
 
+const getIncidentsByYear = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM incidents_by_year",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results?.rows);
+      }
+    );
+  });
+};
+
+const getIncidentsByMonth = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM incidents_by_month",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results?.rows);
+      }
+    );
+  });
+};
+
+const getIncidentsByFlightPath = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM incidents_by_phase",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results?.rows);
+      }
+    );
+  });
+};
+
+const getIncidentsByAirline = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM incidents_by_airline",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results?.rows);
+      }
+    );
+  });
+};
+
+const getIncidentsByBirdSpecies = () => {
+  return new Promise(function (resolve, reject) {
+    pool.query(
+      "SELECT * FROM incidents_by_species",
+      (error, results) => {
+        if (error) {
+          reject(error);
+        }
+        resolve(results?.rows);
+      }
+    );
+  });
+};
+
 module.exports = {
+  getIncidentsByMonth,
+  getIncidentsByYear,
+  getIncidentsByFlightPath,
+  getIncidentsByAirline,
+  getIncidentsByBirdSpecies,
   getTotalIncidents,
   getFatalityRate,
   getDatapointsByYear,
