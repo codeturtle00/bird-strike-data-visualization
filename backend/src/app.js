@@ -59,4 +59,64 @@ app.get("/total-incidents", (req, res) => {
     });
 });
 
+app.get("/incidents-by-month", (req, res) => {
+  bird_strike_model
+    .getIncidentsByMonth()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+});
+
+app.get("/incidents-by-year", (req, res) => {
+  bird_strike_model
+    .getIncidentsByYear()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+});
+
+app.get("/incidents-by-flight-path", (req, res) => {
+  bird_strike_model
+    .getIncidentsByFlightPath()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+});
+
+app.get("/incidents-by-airline", (req, res) => {
+  bird_strike_model
+    .getIncidentsByAirline()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+});
+
+app.get("/incidents-by-bird-species", (req, res) => {
+  bird_strike_model
+    .getIncidentsByBirdSpecies()
+    .then((response) => {
+      res.status(200).send(response);
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).send(error);
+    });
+});
+
 module.exports = app;
