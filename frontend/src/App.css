@@ -1,0 +1,12 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #282c34;
+  color: white;
+  padding: 50px 20%;
+}
+
+.map {
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}

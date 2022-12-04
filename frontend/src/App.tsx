@@ -5,11 +5,15 @@ import Summary from "./components/Summary"
 
 function App () {
   return (
-    <>
+    <div className="main">
+      
+    <h1> Bird Strikes </h1>
       <Summary />
+      <div className="pageSection">
+        <Map />
+      </div>
       <IncidentsPerAircraftBarGraph />
-      <Map />
-    </>
+    </div>
   )
 }
 
