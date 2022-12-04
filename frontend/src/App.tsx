@@ -1,7 +1,8 @@
 import "./App.css"
 import Map from "./components/visualizations/Map"
-import IncidentsPerAircraftBarGraph from "./components/visualizations/IncidentsPerAircraftBarGraph"
+import IncidentsByAircraft from "./components/visualizations/IncidentsByAircraft"
 import Summary from "./components/Summary"
+import IncidentsByYear from "./components/visualizations/IncidentsByYear"
 
 function App () {
   return (
@@ -12,7 +13,8 @@ function App () {
       <div className="pageSection">
         <Map />
       </div>
-      <IncidentsPerAircraftBarGraph />
+      <IncidentsByAircraft />
+      <IncidentsByYear />
     </div>
   )
 }

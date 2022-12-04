@@ -26,7 +26,7 @@ ChartJS.register(
   Legend
 )
 
-function IncidentsPerAircraftBarGraph () {
+function IncidentsByAircraft () {
   const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<
   incidentsPerAircraft[]
   >([])
@@ -69,4 +69,4 @@ function IncidentsPerAircraftBarGraph () {
   )
 }
 
-export default IncidentsPerAircraftBarGraph
+export default IncidentsByAircraft
