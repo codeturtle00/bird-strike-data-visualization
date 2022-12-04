@@ -1,7 +1,30 @@
 require("dotenv").config();
 const express = require("express");
+const winston = require('winston');
+const expressWinston = require('express-winston')
+
 const app = express();
 
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+})
+
+app.use(expressWinston.logger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'user-service' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+    // process.env.NODE_ENV !== 'production' ? new  winston.transports.Console({ format: winston.format.simple() }) : null
+  ],
+}))
 
 const bird_strike_model = require("./bird_strike_model");
 
@@ -18,7 +41,7 @@ app.get("/incidents-per-aircraft", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -30,7 +53,7 @@ app.get("/datapoints-by-year/", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -42,7 +65,7 @@ app.get("/fatality-rate", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -54,7 +77,7 @@ app.get("/total-incidents", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -66,7 +89,7 @@ app.get("/incidents-by-month", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -78,7 +101,7 @@ app.get("/incidents-by-year", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -90,7 +113,7 @@ app.get("/incidents-by-flight-path", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -102,7 +125,7 @@ app.get("/incidents-by-airline", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
@@ -114,7 +137,7 @@ app.get("/incidents-by-bird-species", (req, res) => {
       res.status(200).send(response);
     })
     .catch((error) => {
-      console.log(error);
+      logger.error(error)
       res.status(500).send(error);
     });
 });
