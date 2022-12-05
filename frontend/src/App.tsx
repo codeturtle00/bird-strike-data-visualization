@@ -3,6 +3,9 @@ import Map from "./components/visualizations/Map"
 import IncidentsByAircraft from "./components/visualizations/IncidentsByAircraft"
 import Summary from "./components/Summary"
 import IncidentsByYear from "./components/visualizations/IncidentsByYear"
+import IncidentsByMonth from "./components/visualizations/IncidentsByMonth"
+import IncidentsByFlightPhase from "./components/visualizations/IncidentsByFlightPhase"
+import IncidentsByAirline from "./components/visualizations/IncidentsByAirline"
 
 function App () {
   return (
@@ -15,6 +18,9 @@ function App () {
       </div>
       <IncidentsByAircraft />
       <IncidentsByYear />
+      <IncidentsByMonth />
+      <IncidentsByFlightPhase />
+      <IncidentsByAirline />
     </div>
   )
 }

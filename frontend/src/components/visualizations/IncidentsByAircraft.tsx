@@ -1,30 +1,21 @@
 import { useEffect, useState } from "react"
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  ArcElement,
   Tooltip,
   Legend
 } from "chart.js"
-import { Bar } from "react-chartjs-2"
+import { Pie } from "react-chartjs-2"
 import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants"
+
+
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface incidentsPerAircraft {
   index: number,
   AC_MASS: string,
   NR_INJURIES: number
 }
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
 
 function IncidentsByAircraft () {
   const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<
@@ -53,14 +44,21 @@ function IncidentsByAircraft () {
   return (
     <div>
       <h3>Number of Incidents by Aircraft model</h3>
-      <Bar
+      <Pie
         data={{
           labels,
           datasets: [
             {
-              label: "Num. Incidents",
+              label: "Number of Incidents",
               data,
-              backgroundColor: "rgba(53, 162, 235, 1)"
+              borderColor: 'white',
+              backgroundColor: [
+                "#003f5c",
+                "#58508d",
+                "#bc5090",
+                "#ff6361",
+                "#ffa600",
+              ]
             }
           ]
         }}
