@@ -14,7 +14,6 @@ const Menu: React.FC<Props> = ({show, hideFunc}) => {
     if (!show) {
       setShowGraphs(false)
     }
-    console.log("show: ", show)
   }, [show])
 
   return show ? (

@@ -28,19 +28,18 @@ interface incidentsPerPhase {
 function IncidentsByFlightPhase () {
   const [incidentsByFlightPhase, setIncidentsByFlightPhase] = useState<incidentsPerPhase[]>([])
 
-  const getIncidentsByFlightPhase = () => {
-    fetch(INCIDENTS_BY_FLIGHT_PATH_API)
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then((data) => {
-        setIncidentsByFlightPhase(data as incidentsPerPhase[])
-        console.log(incidentsByFlightPhase)
-      })
-      .catch(err => console.log("Error fetching: ", err))
-  }
-
   useEffect(() => {
+    const getIncidentsByFlightPhase = () => {
+      fetch(INCIDENTS_BY_FLIGHT_PATH_API)
+        .then(async (response) => {
+          return await response.json()
+        })
+        .then((data) => {
+          setIncidentsByFlightPhase(data as incidentsPerPhase[])
+        })
+        .catch(err => console.log("Error fetching: ", err))
+    }
+
     getIncidentsByFlightPhase()
   }, []);
 

@@ -28,19 +28,18 @@ interface incidentsPerAirline {
 function IncidentsByAirline () {
   const [incidentsByAirline, setIncidentsByAirline] = useState<incidentsPerAirline[]>([])
 
-  const getIncidentsByAirline = () => {
-    fetch(INCIDENTS_BY_AIRLINE_API)
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then((data) => {
-        data.sort((a: incidentsPerAirline, b: incidentsPerAirline) => parseInt(b.incidents) - parseInt(a.incidents))
-        setIncidentsByAirline(data as incidentsPerAirline[])
-      })
-      .catch(err => console.log("Error fetching: ", err))
-  }
-
   useEffect(() => {
+    const getIncidentsByAirline = () => {
+      fetch(INCIDENTS_BY_AIRLINE_API)
+        .then(async (response) => {
+          return await response.json()
+        })
+        .then((data) => {
+          data.sort((a: incidentsPerAirline, b: incidentsPerAirline) => parseInt(b.incidents) - parseInt(a.incidents))
+          setIncidentsByAirline(data as incidentsPerAirline[])
+        })
+        .catch(err => console.log("Error fetching: ", err))
+    }
     getIncidentsByAirline()
   }, []);
   

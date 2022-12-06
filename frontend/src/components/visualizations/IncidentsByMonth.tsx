@@ -30,19 +30,18 @@ ChartJS.register(
 function IncidentsByMonth () {
   const [incidentsByMonth, setIncidentsByMonth] = useState<incidentsPerYear[]>([])
 
-  const getIncidentsByMonth = () => {
-    fetch(INCIDENTS_BY_MONTH_API)
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then((data) => {
-        setIncidentsByMonth(data as incidentsPerYear[])
-        console.log(incidentsByMonth)
-      })
-      .catch(err => console.log("Error fetching: ", err))
-  }
-
   useEffect(() => {
+    const getIncidentsByMonth = () => {
+      fetch(INCIDENTS_BY_MONTH_API)
+        .then(async (response) => {
+          return await response.json()
+        })
+        .then((data) => {
+          setIncidentsByMonth(data as incidentsPerYear[])
+        })
+        .catch(err => console.log("Error fetching: ", err))
+    }
+
     getIncidentsByMonth()
   }, []);
 

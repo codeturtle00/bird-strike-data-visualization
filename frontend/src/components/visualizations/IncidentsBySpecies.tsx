@@ -28,19 +28,19 @@ interface incidentsPerSpecies {
 function IncidentsBySpecies () {
   const [incidentsBySpecies, setIncidentsBySpecies] = useState<incidentsPerSpecies[]>([])
 
-  const getIncidentsBySpecies = () => {
-    fetch(INCIDENTS_BY_BIRD_SPECIES_API)
-      .then(async (response) => {
-        return await response.json()
-      })
-      .then((data) => {
-        data.sort((a: incidentsPerSpecies, b: incidentsPerSpecies) => parseInt(b.incidents) - parseInt(a.incidents))
-        setIncidentsBySpecies(data as incidentsPerSpecies[])
-      })
-      .catch(err => console.log("Error fetching: ", err))
-  }
-
   useEffect(() => {
+    const getIncidentsBySpecies = () => {
+      fetch(INCIDENTS_BY_BIRD_SPECIES_API)
+        .then(async (response) => {
+          return await response.json()
+        })
+        .then((data) => {
+          data.sort((a: incidentsPerSpecies, b: incidentsPerSpecies) => parseInt(b.incidents) - parseInt(a.incidents))
+          setIncidentsBySpecies(data as incidentsPerSpecies[])
+        })
+        .catch(err => console.log("Error fetching: ", err))
+    }
+
     getIncidentsBySpecies()
   }, []);
   
