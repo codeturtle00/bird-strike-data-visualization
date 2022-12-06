@@ -17,14 +17,14 @@ const Menu: React.FC<Props> = ({show, hideFunc}) => {
   }, [show])
 
   return show ? (
-    <div className="menuBackground">
-      <div className="menusSection"> 
+    <div id="menuBackground">
+      <div id="menusSection"> 
         <div className="menu">
           <h1>Aircraft Bird Strikes Data Visualization</h1>
           <Summary />
           <div style={{height: 20}}></div>
-          <button className="menuButton" onClick={()=>setShowGraphs(!showGraphs)}>{">"} View Graphs of Incidents vs Variable</button>
-          <button className="menuButton" onClick={hideFunc}>{">"} View Map of Incidents by Year</button>
+          <button className="menuButton" data-testid="view-graphs-btn" onClick={()=>setShowGraphs(!showGraphs)}>{">"} View Graphs of Incidents vs Variable</button>
+          <button className="menuButton" data-testid="view-map-btn" onClick={hideFunc}>{">"} View Map of Incidents by Year</button>
           <p>Data provided publicly by <a href="https://wildlife.faa.gov/home">wildlife.faa.gov</a>. Website updated on: Nov 1 2022</p>
 
         </div>
