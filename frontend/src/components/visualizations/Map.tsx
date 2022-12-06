@@ -90,18 +90,21 @@ export default function Map () {
   }
 
   return (
-    <div>
-      <h3>Map of Incidents by Year</h3>
-      Showing Year: <b>{currYear}</b>
-      <input
-        type="range"
-        min={minYear===DEFAULT_MIN_YEAR ? 1990 : minYear}
-        max={maxYear===DEFAULT_MAX_YEAR ? 2022 : maxYear}
-        value={currYear}
-        onChange={(e) => setCurrYear(e.target.valueAsNumber)}
-        className="slider"
-        id="myRange"
-      ></input>
+    <div className="background">
+      <div className="legend">
+        <h3>Map of Incidents by Year</h3>
+        Showing Year: <b>{currYear}</b>
+        <input
+          type="range"
+          min={minYear===DEFAULT_MIN_YEAR ? 1990 : minYear}
+          max={maxYear===DEFAULT_MAX_YEAR ? 2022 : maxYear}
+          value={currYear}
+          onChange={(e) => setCurrYear(e.target.valueAsNumber)}
+          className="slider"
+          id="myRange"
+        ></input>
+      </div>
+
       <ComposableMap className="map" data-tip="">
         <ZoomableGroup
             zoom={position.zoom}

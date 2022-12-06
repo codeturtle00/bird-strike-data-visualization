@@ -43,8 +43,11 @@ function IncidentsByAircraft () {
 
   return (
     <div>
-      <h3>Number of Incidents by Aircraft model</h3>
+      <h3>Number of Incidents by Aircraft Mass</h3>
       <Pie
+        options={{
+          aspectRatio: 2
+        }}
         data={{
           labels,
           datasets: [
