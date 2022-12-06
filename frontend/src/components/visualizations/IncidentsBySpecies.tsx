@@ -9,7 +9,7 @@ import {
   Legend
 } from "chart.js"
 import { Bar } from "react-chartjs-2"
-import { INCIDENTS_BY_AIRLINE_API } from "../../constants"
+import { INCIDENTS_BY_BIRD_SPECIES_API } from "../../constants"
 
 ChartJS.register(
   CategoryScale,
@@ -20,36 +20,36 @@ ChartJS.register(
   Legend
 )
 
-interface incidentsPerAirline {
-    airline: string,
+interface incidentsPerSpecies {
+    species: string,
     incidents: string
 }
 
-function IncidentsByAirline () {
-  const [incidentsByAirline, setIncidentsByAirline] = useState<incidentsPerAirline[]>([])
+function IncidentsBySpecies () {
+  const [incidentsBySpecies, setIncidentsBySpecies] = useState<incidentsPerSpecies[]>([])
 
-  const getIncidentsByAirline = () => {
-    fetch(INCIDENTS_BY_AIRLINE_API)
+  const getIncidentsBySpecies = () => {
+    fetch(INCIDENTS_BY_BIRD_SPECIES_API)
       .then(async (response) => {
         return await response.json()
       })
       .then((data) => {
-        data.sort((a: incidentsPerAirline, b: incidentsPerAirline) => parseInt(b.incidents) - parseInt(a.incidents))
-        setIncidentsByAirline(data as incidentsPerAirline[])
+        data.sort((a: incidentsPerSpecies, b: incidentsPerSpecies) => parseInt(b.incidents) - parseInt(a.incidents))
+        setIncidentsBySpecies(data as incidentsPerSpecies[])
       })
       .catch(err => console.log("Error fetching: ", err))
   }
 
   useEffect(() => {
-    getIncidentsByAirline()
+    getIncidentsBySpecies()
   }, []);
   
-  const labels = incidentsByAirline.map((x) => x.airline)
-  const data = incidentsByAirline.map((x) => parseInt(x.incidents))
+  const labels = incidentsBySpecies.map((x) => x.species)
+  const data = incidentsBySpecies.map((x) => parseInt(x.incidents))
 
   return (
     <div>
-      <h3>Number of Incidents by Airline</h3>
+      <h3>Number of Incidents by Bird Species</h3>
       <Bar
         options={{
             indexAxis: 'y' as const,
@@ -66,10 +66,10 @@ function IncidentsByAirline () {
           ]
         }}
         
-        height={5000}
+        height={8000}
       />
     </div>
   )
 }
 
-export default IncidentsByAirline
+export default IncidentsBySpecies

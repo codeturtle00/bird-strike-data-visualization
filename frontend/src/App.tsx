@@ -6,6 +6,8 @@ import IncidentsByYear from "./components/visualizations/IncidentsByYear"
 import IncidentsByMonth from "./components/visualizations/IncidentsByMonth"
 import IncidentsByFlightPhase from "./components/visualizations/IncidentsByFlightPhase"
 import IncidentsByAirline from "./components/visualizations/IncidentsByAirline"
+import IncidentsBySpecies from "./components/visualizations/IncidentsBySpecies"
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 function App () {
   return (
@@ -16,11 +18,35 @@ function App () {
       <div className="pageSection">
         <Map />
       </div>
-      <IncidentsByAircraft />
-      <IncidentsByYear />
-      <IncidentsByMonth />
-      <IncidentsByFlightPhase />
-      <IncidentsByAirline />
+      <Tabs>
+        <TabList>
+          <Tab>Aircraft Size</Tab>
+          <Tab>Year</Tab>
+          <Tab>Month</Tab>
+          <Tab>Flight Phase</Tab>
+          <Tab>Airline</Tab>
+          <Tab>Bird Species</Tab>
+        </TabList>
+
+        <TabPanel>
+          <IncidentsByAircraft />
+        </TabPanel>
+        <TabPanel>
+          <IncidentsByYear />
+        </TabPanel>
+        <TabPanel>
+          <IncidentsByMonth />
+        </TabPanel>
+        <TabPanel>
+          <IncidentsByFlightPhase />
+        </TabPanel>
+        <TabPanel>
+          <IncidentsByAirline />
+        </TabPanel>
+        <TabPanel>
+            <IncidentsBySpecies />
+        </TabPanel>
+      </Tabs>
     </div>
   )
 }

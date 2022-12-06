@@ -5,6 +5,7 @@ export const INCIDENTS_BY_YEAR_API = BACKEND_URL + "/incidents-by-year";
 export const INCIDENTS_BY_MONTH_API = BACKEND_URL + "/incidents-by-month";
 export const INCIDENTS_BY_FLIGHT_PATH_API = BACKEND_URL + "/incidents-by-flight-path";
 export const INCIDENTS_BY_AIRLINE_API = BACKEND_URL + "/incidents-by-airline";
+export const INCIDENTS_BY_BIRD_SPECIES_API = BACKEND_URL + "/incidents-by-bird-species";
 export const DATAPOINTS_BY_YEAR_API = BACKEND_URL + "/datapoints-by-year/";
 export const FATALITY_RATE = BACKEND_URL + "/fatality-rate";
 export const TOTAL_INCIDENTS = BACKEND_URL + "/total-incidents";
