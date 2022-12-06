@@ -14,8 +14,7 @@ export const SummaryCard: React.FC<Props> = ({totalNumIncidents, fatalityRate}) 
       <h3>Summary</h3>
       <ul>
         <li>Total number of report incidents: {totalNumIncidents}</li>
-        <li>Fatality Rate: {fatalityRate}</li>
-        <li>(TODO: other interesting stats)</li>
+        <li>Fatality Rate: {(fatalityRate * 100).toFixed(2)}%</li>
       </ul>
     </div>
   )

@@ -8,6 +8,7 @@ import {
 } from "react-simple-maps"
 import { DATAPOINTS_BY_YEAR_API } from "../../constants"
 import ReactTooltip from 'react-tooltip'
+import 'react-tabs/style/react-tabs.css';
 
 const DEFAULT_MIN_YEAR = 999999
 const DEFAULT_MAX_YEAR = 0
@@ -40,7 +41,6 @@ export default function Map () {
   const [zoomScaleFactor, setZoomScaleFactor] = useState(position.zoom)
   const [minYear, setMinYear] = useState(DEFAULT_MIN_YEAR)
   const [maxYear, setMaxYear] = useState(DEFAULT_MAX_YEAR)
-  const [maxIncidents, setMaxIncidents] = useState(0)
   const [tooltip, setTooltip] = useState("");
 
 
@@ -55,7 +55,6 @@ export default function Map () {
           let formattedData: markersByYear = {}
           let minYearInData = DEFAULT_MIN_YEAR
           let maxYearInData = DEFAULT_MAX_YEAR
-          let maxIncidentsInData = 0
           data.forEach((entry: apiResponseEntry) => {
             const marker: marker = {
               label: entry.AIRPORT,
@@ -66,13 +65,11 @@ export default function Map () {
             formattedData[parseInt(entry.INCIDENT_YEAR)].push(marker)
             minYearInData = Math.min(minYearInData, parseInt(entry.INCIDENT_YEAR))
             maxYearInData = Math.max(maxYearInData, parseInt(entry.INCIDENT_YEAR))
-            maxIncidentsInData = Math.max(maxIncidentsInData, parseInt(entry.NUM_INCIDENTS))
           })
           setMarkersByYear(formattedData)
           setMinYear(minYearInData)
           setMaxYear(maxYearInData)
           setCurrYear(maxYearInData)
-          setMaxIncidents(maxIncidentsInData)
         })
         .catch(err => console.log("Error fetching: ", err))
     }
@@ -85,11 +82,10 @@ export default function Map () {
   }
 
   function getColor(numIncidents: number) {
-    const percent = numIncidents / maxIncidents
-    // Our gradient will be 300 colors, first R 105 -> 255, then G 255 -> 0 
-    const gradient = percent * 300
-    const red = Math.min(105 + gradient, 255)
-    const green = 255 - Math.max(0, gradient - 150)
+    // Our gradient will be 400 colors, first R 110 -> 255, then G 255 -> 0 
+    const gradient = Math.min(numIncidents*2, 400)
+    const red = Math.min(110 + gradient, 255)
+    const green = 255 - Math.max(0, gradient - 145)
     return `rgb(${red}, ${green}, 0)`
   }
 
@@ -161,15 +157,3 @@ export default function Map () {
     </div>
   )
 }
-
-// function circleMarker({size, incidentNum, gradientFunc, airport}) => {
-//   return (
-//     <circle 
-//             data-tip="hello world\n test \n"
-//             r={2/Math.max(zoomScaleFactor/2, 1)} 
-//             fill={getColor(num_incidents)} 
-//             stroke='#FF62E1'
-//             strokeWidth='0.05'
-//             />
-//   )
-// } 
