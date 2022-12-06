@@ -69,8 +69,8 @@ body {
 
 .gradient {
   background-image: linear-gradient(to right, rgb(110, 255, 0) , rgb(255, 0, 0));
-  height: 40px;
-  width: 500px;
+  height: 20px;
+  width: 300px;
   border-radius: 3px;
   border: lightblue 1px solid;
 }
@@ -107,9 +107,10 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   color:aliceblue;
   font-weight: bold;
-  font-size: 100px;
+  font-size: 80px;
   padding: 10px;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
+  border: none;
 }
 
 .menuButton {
