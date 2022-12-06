@@ -91,7 +91,7 @@ export default function Map () {
 
   return (
     <div className="background">
-      <div className="legend">
+      <div className="mapSlider">
         <h3>Map of Incidents by Year</h3>
         Showing Year: <b>{currYear}</b>
         <input
@@ -103,6 +103,10 @@ export default function Map () {
           className="slider"
           id="myRange"
         ></input>
+      </div>
+      <div className="mapLegend">
+        <p className="legendText">0 - 200+ incidents</p>
+        <div className="gradient"/>
       </div>
 
       <ComposableMap className="map" data-tip="">

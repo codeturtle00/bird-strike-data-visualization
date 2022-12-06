@@ -54,10 +54,30 @@ body {
   margin-top: 5%;
 }
 
-.legend {
+.mapSlider {
   position: absolute;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mapLegend {
+  position: absolute;
+  bottom: 0;
+  right:0;
+  padding: 20px;
+}
+
+.gradient {
+  background-image: linear-gradient(to right, rgb(110, 255, 0) , rgb(255, 0, 0));
+  height: 40px;
+  width: 500px;
+  border-radius: 3px;
+  border: lightblue 1px solid;
+}
+
+.legendText {
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  margin: 0;
 }
 
 .background {
