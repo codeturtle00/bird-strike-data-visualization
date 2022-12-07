@@ -11,12 +11,8 @@ interface Props {
 export const SummaryCard: React.FC<Props> = ({totalNumIncidents, fatalityRate}) => {
   return (
     <div>
-      <h3>Summary</h3>
-      <ul>
-        <li>Total number of report incidents: {totalNumIncidents}</li>
-        <li>Fatality Rate: {fatalityRate}</li>
-        <li>(TODO: other interesting stats)</li>
-      </ul>
+      <p className="summaryText">Total number of report incidents: <b>{totalNumIncidents}</b></p>
+      <p className="summaryText">Fatality Rate: <b>{(fatalityRate * 100).toFixed(2)}%</b></p>
     </div>
   )
 }

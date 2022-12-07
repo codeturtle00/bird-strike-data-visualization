@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react"
 import {
   Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
+  ArcElement,
   Tooltip,
   Legend
 } from "chart.js"
-import { Bar } from "react-chartjs-2"
+import { Pie } from "react-chartjs-2"
 import { INCIDENTS_PER_AIRCRAFT_API } from "../../constants"
+
+
+ChartJS.register(ArcElement, Tooltip, Legend)
 
 interface incidentsPerAircraft {
   index: number,
@@ -17,16 +17,7 @@ interface incidentsPerAircraft {
   NR_INJURIES: number
 }
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-)
-
-function IncidentsPerAircraftBarGraph () {
+function IncidentsByAircraft () {
   const [incidentsPerAircraft, setIncidentsPerAircraft] = useState<
   incidentsPerAircraft[]
   >([])
@@ -52,15 +43,25 @@ function IncidentsPerAircraftBarGraph () {
 
   return (
     <div>
-      <h3>Number of Incidents by Aircraft model</h3>
-      <Bar
+      <h3>Number of Incidents by Aircraft Mass</h3>
+      <Pie
+        options={{
+          aspectRatio: 2
+        }}
         data={{
           labels,
           datasets: [
             {
-              label: "Num. Incidents",
+              label: "Number of Incidents",
               data,
-              backgroundColor: "rgba(53, 162, 235, 1)"
+              borderColor: 'white',
+              backgroundColor: [
+                "#003f5c",
+                "#58508d",
+                "#bc5090",
+                "#ff6361",
+                "#ffa600",
+              ]
             }
           ]
         }}
@@ -69,4 +70,4 @@ function IncidentsPerAircraftBarGraph () {
   )
 }
 
-export default IncidentsPerAircraftBarGraph
+export default IncidentsByAircraft

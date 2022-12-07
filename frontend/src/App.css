@@ -1,0 +1,143 @@
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  background-color: #282c34;
+  color: white;
+  padding: 50px 20%;
+}
+
+#menuBackground {
+  position:absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  /* background-color: #282c346d; */
+  backdrop-filter: blur(10px);
+  color: white;
+}
+
+#menusSection {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+  margin-right: 10%;
+  height: 90%;
+}
+
+.menu {
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 30px;
+  border-radius: 5px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 15%;
+}
+
+.extraMenu {
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 10px;
+  padding: 30px;
+  border-radius: 5px;
+  overflow-y: auto;
+  flex: 1;
+  margin-top: 5%;
+}
+
+.mapSlider {
+  position: absolute;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mapLegend {
+  position: absolute;
+  bottom: 0;
+  right:0;
+  padding: 20px;
+}
+
+.gradient {
+  background-image: linear-gradient(to right, rgb(110, 255, 0) , rgb(255, 0, 0));
+  height: 20px;
+  width: 300px;
+  border-radius: 3px;
+  border: lightblue 1px solid;
+}
+
+.legendText {
+  text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+  margin: 0;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #282c34;
+  color: white;
+}
+
+.map {
+  height: 100%;
+  width: 100%;
+}
+
+.slider {
+  width: 100%;
+}
+
+.toggleMenuButton {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  margin-top: 15%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color:aliceblue;
+  font-weight: bold;
+  font-size: 80px;
+  padding: 10px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+}
+
+.menuButton {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+  font-size: 20px;
+}
+
+.menuButton:hover {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+a {
+  color: rgb(184, 255, 250);
+  text-decoration: none;
+}
+
+h1 {
+  margin-top: 0px;
+}
+
+.summaryText {
+  font-size: 20px;
+  margin: 0;
+  color: white;
+}
