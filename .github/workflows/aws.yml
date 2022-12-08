@@ -56,7 +56,7 @@ jobs:
       
     - name: inject DB_URL
       run: |
-        sed -i '' 's/<DB_URL>/${{ secrets.DB_URL }}/g' .aws/task-definition.json
+        sed -i 's/<DB_URL>/${{ secrets.DB_URL }}/g' .aws/task-definition.json
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
