@@ -50,17 +50,17 @@ To setup:
 `sh ./setup-script.sh`
 Add the given db connection string to a file `./backend/.env` as per `./backend/.env-example`
 
-To spin up development application, run
-`docker-compose -f docker-compose.dev.yml up`.
+To spin up development application, in project's root run
+`docker compose -f docker-compose.dev.yml up`.
 
 To rebuild the docker images , run
-`docker-compose -f docker-compose.dev.yml build`.
+`docker compose -f docker-compose.dev.yml build`.
 
 To tear down, run
-`docker-compose -f docker-compose.dev.yml down --volumes`.
+`docker compose -f docker-compose.dev.yml down --volumes`.
 
 To run tests, run
-`docker-compose -f docker-compose.dev.yml run client npm test`.
+`docker compose -f docker-compose.dev.yml run client npm test`.
 
 # Roadmap
 
