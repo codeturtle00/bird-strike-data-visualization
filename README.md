@@ -13,6 +13,8 @@ Please see [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-s
 - [Meeting Notes](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/meeting-notes.md)
 - [Assignment 1 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a1-postmortem)
 - [Assignment 2 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-2-Discussion)
+- [Assignment 3 Discussion](https://github.com/codeturtle00/bird-strike-data-visualization#Assignment-3-Discussion)
+- [Assignment 2 Postmortem here](https://github.com/codeturtle00/bird-strike-data-visualization/blob/main/docs/a2-postmortem)
 
 # Project Overview
 
@@ -33,7 +35,8 @@ Our team consists of three members, 4th year UofT students.
 
 - **Jacky Yang**. Experience in UX design and full stack development with especial proficiency in React and Python.
 - **Henning Lindig**. Experience in full-stack web development and software infrastructure
-- **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (Postgres, Cassandra)
+- **Dmytro Lopushanskyy**. Significant experience in Python, Data Engineering, Databases (
+gres, Cassandra)
 
 ## Tech Stack
 
@@ -80,12 +83,12 @@ Our roadmap currently consists of three milestones.
 - CI & CD implementation
 - Hosting the database and integrating it with backend
 
-**Milestone 3:** (In progress)
+**Milestone 3:** (Done in Assignment 3)
 
 - Add more visulizations (at least 3 more) to show characteristics of the data set
-- Frontend to include relevant Twitter feed
+- Frontend to include relevant Twitter feed (missed feature, see Assignment 3 discussion section)
 - Improve CI&CD: Add code linting and style checks
-- Segragate the database into dev and prod instances. Allow the local db instantiation.
+- Segragate the database into dev and prod instances. Allow the local db instantiation. (missed feature, see Assignment 3 discussion section)
 
 At every stage we expect to add tests that <ins>fail on the previous stage</ins> but also <ins>succeed on the new code version with the latest functionality</ins>
 
@@ -199,7 +202,13 @@ This is why we chose Docker.
 
 ## Dataset Selection
 
-During the initial meeting we decided to work with Airplane datasets, since all of us had interest in it. We have generated the following dataset ideas:
+During the initial meeting we decided to work with aviation datasets, since all of us had interest in it. We used the following criteria for dataset evaluation:
+* Contains enough data  
+* Not overused  
+* Correct and representative  
+* On the topic of aviation  
+
+Below is the list of datasets we found and used the above criteria against:
 
 https://www.kaggle.com/datasets/thedevastator/airplane-crashes-and-fatalities
 https://www.kaggle.com/datasets/saurograndi/airplane-crashes-since-1908
@@ -210,7 +219,7 @@ https://wildlife.faa.gov/home
 Out of all of these, some are wildly popular, thus not very interesting to explore.  
 Some do not contain enough data to draw any interesting conclusions.
 
-The only dataset that all of us liked was the last one, which we decided to use.
+The only dataset that all of us liked was the last one, which we decided to use. 
 
 ## Assignment 2 Discussion
 
@@ -279,3 +288,25 @@ Jacky: focused on FrontEnd tasks, which included charts development and tests
 Henning: worked on BackEnd, creating endpoints and did CI/CD setup     
 
 The status of the tasks can also be tracked on our GitHub Projects dashboard
+
+## Assignment 3 Discussion
+
+### What features were not delivered?
+
+* Did not implement Twitter feed in the app, due to priorities change. We decided that improving our UI is a more important next step than adding new features.
+* Did not segragate the database into dev and prod instances. We realized that having local database and refilling it with data every time is too complicated. Moreover, our database is read-only, so there was no point in having multiple environments for it.
+
+### What are the results?
+
+We have successfully deployed our application, significantly improved the UI (did a complete redesign)
+
+### Validation, Verification, and Acceptance criteria 
+
+* FrontEnd displays all six visualizations for the data and is responsive 
+* Backend has endpoints for all visualization, responds to requests   
+* Database is deployed, available and accessible with SSL enabled  
+
+* Code needs to pass all unit tests, which cover at least 60% of the code.
+* PRs must include any manual test criterias.
+
+Our tests directly verify how well the code conforms to the criteria.
