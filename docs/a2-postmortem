@@ -1,0 +1,15 @@
+## What goals have been achieved
+ 
+* Added five more visulizations to show characteristics of the data set
+* Improved CI&CD: Added code linting and style checks
+* Significantly imrpoved our UI: did complete redesign
+ 
+## What goals have been missed
+
+* Did not implement Twitter feed in the app
+* Did not segragate the database into dev and prod instances
+ 
+## How plans will need to be adjusted, based on remaining time available and project scope.
+
+During the implementation of A2, our priorities changed. We decided that improving our UI is a more important next step than adding new features. This is the reason we decided not to implement Twitter features in our product at all. More detailed discussion documented in the meeting notes.
+In addition, it seemed to us at first that it is a good idea to segragate the database into dev and prod instances. But then we realized that having local database and refilling it with data every time is too complicated. Moreover, our database is read-only, so there was no point in having multiple environments for it.
